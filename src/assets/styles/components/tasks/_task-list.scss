@@ -5,18 +5,30 @@
 
 .wish-list {
   display: flex;
+  flex-flow: column wrap;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  z-index: 1;
+  position: relative;
+  top: 15vh;
+
+  &__title {
+    font-size: 4em;
+    font-weight:  lighter;
+    margin-bottom: 30px;
+    color: white;
+    letter-spacing: 4px;
+  }
 
   &__main {
-    width: 600px;
-    min-height: 500px;
-    background-color: #373940;
-    padding: 25px;
+    width: 40%;
+    min-height: 60vh;
+    background-color: #fff;
     margin: 10px;
     justify-content: center;
-    box-shadow: 0 0 15px 8px rgba(0, 0, 0, 0.788);
+    border-radius: 5px;
+    box-shadow: 0 0 40px 10px rgba(189, 189, 189, 0.425);
 
     @media screen and (max-width: 768px) {
       width: 100vw;
@@ -34,7 +46,6 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      margin-top: 15px;
     }
   }
 }

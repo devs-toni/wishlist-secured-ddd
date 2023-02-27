@@ -1,5 +1,6 @@
 @use "./components/tasks/task-list";
-@use "./abstracts/variables.scss";
+@use "./components/cover";
+@use "./abstracts/variables";
 
 * {
   margin: 0;
@@ -7,26 +8,16 @@
   box-sizing: border-box;
 }
 
-body,
 html {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #ffffff;
-  font-family: Lato, sans-serif;
-  color: white;
-  margin-top: 20px;
+}
+
+body {
+  margin: 0;
+  font-family: Arial;
 
   @media screen and (max-width: 768px) {
     overflow: hidden;
     margin-top: 0;
-  }
-
-  code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-      monospace;
   }
 }

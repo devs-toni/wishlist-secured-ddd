@@ -1,0 +1,12 @@
+.cover {
+  position: absolute;
+  z-index: 0;
+  min-width: 100vw;
+  min-height: 38vh;
+  max-height: 38vh;
+  background-image: url("../../images/header.jpg");
+  background-size: cover;
+  background-position: 0 70%;
+  background-repeat: no-repeat no-repeat;
+  filter: saturate(2) contrast(1);
+}

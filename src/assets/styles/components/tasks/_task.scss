@@ -1,39 +1,87 @@
 @use "../../abstracts/variables" as var;
 
-.tasks-container {
-  width: 500px;
+.task-container {
+  width: 100%;
   min-height: 65px;
   background-color: #ffffff;
-  margin: 5px 0;
-  padding: 8px 15px 8px 20px;
+  padding: .3em .3em .3em 1.3em;
   display: flex;
+  flex-flow: column wrap;
   justify-content: space-between;
   align-items: center;
-  border-radius: 7px;
-  cursor: pointer;
-  color: #000000;
-
-  &.completed {
-    background-color: #0400ff4d;
-    text-decoration: line-through;
-  }
+  border-bottom: 1px solid rgba(194, 193, 193, 0.514);
+  transition: all .3s ease;
 
   &__task-text {
-    width: 100%;
+    width: 90%;
     height: 100%;
-    font-size: 20px;
     display: flex;
     align-items: center;
     overflow-wrap: anywhere;
-  }
+    cursor: pointer;
 
-  &__icons-container {
+    p {
+      margin-left: 20px;
+      font-size: 1.5em;
+      font-weight: 540;
+      letter-spacing: 1px;
+      transition: all .3s ease;
 
-    &--task-icon {
-      width: 25px;
-      height: 25px;
-      margin: 5px;
+      &.completed {
+        text-decoration: line-through;
+        opacity: .4;
+        font-size: 1.1em;
+      }
+    }
+
+    .mark {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 1px solid rgba(184, 184, 184, 0.63);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+
+      &.completed {
+        width: 25px;
+        height: 25px;
+        border: none;
+        background: rgb(219, 0, 226);
+        background: linear-gradient(90deg, rgba(219, 0, 226, 1) 0%, rgba(0, 191, 230, 1) 100%);
+      }
+
+      &__completed {
+        width: 70%;
+        height: 70%;
+        color: white;
+      }
     }
   }
 
+  &__icons-container {
+    width: 10%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &--task-icon {
+      opacity: .3;
+      width: 30px;
+      height: 30px;
+      margin: 5px;
+      transition: all .5s ease;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  &:hover {
+    background-color: rgba(255, 170, 245, 0.37);
+  }
 }

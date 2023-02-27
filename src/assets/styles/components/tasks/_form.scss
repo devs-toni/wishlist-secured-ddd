@@ -1,37 +1,29 @@
 @use "../../abstracts/variables" as var;
 
 .form {
+  width: 40%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 
   &__input {
-    width: 350px;
-    font-size: 18px;
+    width: 100%;
+    font-size: 1.3em;
+    font-weight: 500;
     background-color: white;
-    padding: 14px 32px 14px 16px;
+    padding: 24px 42px 24px 42px;
     border-radius: 4px 0 0 4px;
     outline: none;
     border: none;
+    margin-bottom: 20px;
+    color: rgb(70, 69, 69);
+    letter-spacing: 1.5px;
 
     @media screen and (max-width: 510px) {
       margin-bottom: 20px;
       width: 95%;
     }
-  }
-
-  &__submit {
-    padding: 15px;
-    font-size: 18px;
-    font-family: Roboto, sans-serif;
-    border: none;
-    border-radius: 0 4px 4px 0;
-    cursor: pointer;
-    outline: none;
-    background-color: #61DAFB;
-    color: #000000;
-    text-transform: capitalize;
   }
 
 

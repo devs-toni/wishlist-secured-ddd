@@ -14,8 +14,8 @@ export default function Form({ onSubmit }) {
 
     const newTask = {
       id: uuidv4(),
-      texto: inputTask,
-      completada: false
+      text: inputTask,
+      isCompleted: false
     }
     setInputTask('');
     onSubmit(newTask);
@@ -32,7 +32,6 @@ export default function Form({ onSubmit }) {
         value={inputTask}
         onChange={handleChange}
       />
-      <button type='submit' className='form__submit'>Add</button>
     </form>
   );
 }

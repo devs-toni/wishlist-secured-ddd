@@ -1,13 +1,16 @@
-import TaskList from './componentes/TaskList';
+import Cover from './componentes/Cover';
+import Main from './componentes/Main';
+import { WishProvider } from './context/WishContext';
 
 function App() {
-    return (
-        <div className="wish-list">
-            <div className='wish-list__main'>
-                <TaskList />
-            </div>
-        </div>
-    );
+  return (
+    <>
+      <Cover />
+      <WishProvider>
+        <Main />
+      </WishProvider>
+    </>
+  );
 }
 
 export default App;
