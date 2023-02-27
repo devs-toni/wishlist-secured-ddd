@@ -11,14 +11,14 @@ export default function Form({ onSubmit }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const newTask = {
-      id: uuidv4(),
-      text: inputTask,
-      isCompleted: false
-    }
-    setInputTask('');
-    onSubmit(newTask);
+      const newTask = {
+        id: uuidv4(),
+        text: inputTask,
+        isCompleted: false
+      }
+      setInputTask('');
+      onSubmit(newTask);
+    
   };
 
   return (

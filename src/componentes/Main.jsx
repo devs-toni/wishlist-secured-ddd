@@ -9,8 +9,8 @@ const Main = () => {
   const navigate = useNavigate();
 
   const { variables, functions, filters } = useWishes();
-  const { addTask, completeTask, deleteTask } = functions;
-  const { allTasks } = variables;
+  const { addTask, completeTask, deleteTask, updateTask, recoverTask } = functions;
+  const { allTasks, trashTasks } = variables;
   const { setFilter, filteredTasks, setFilteredTasks, isFilter, setIsFilter } = filters;
 
   useEffect(() => {
@@ -21,8 +21,6 @@ const Main = () => {
           setFilter("active");
           setIsFilter(true);
           const activeTasks = allTasks.filter(t => !t.isCompleted);
-          console.log(4)
-          console.log(activeTasks);
           setFilteredTasks([...activeTasks]);
           break;
 
@@ -30,6 +28,12 @@ const Main = () => {
           setFilter("completed");
           setIsFilter(true);
           setFilteredTasks([...allTasks.filter(t => t.isCompleted)])
+          break;
+
+        case "trash":
+          setFilter("trash");
+          setIsFilter(true);
+          setFilteredTasks([...trashTasks])
           break;
 
         default:
@@ -41,7 +45,7 @@ const Main = () => {
       setFilter("all");
       setFilteredTasks([...allTasks]);
     }
-  }, [type]);
+  }, [type, allTasks, trashTasks]);
 
   return (
     <>
@@ -53,7 +57,12 @@ const Main = () => {
             <h1 className='wish-list__title'>WISHLIST</h1>
             <Form onSubmit={addTask} />
             <div className='wish-list__main'>
-              <WishList tasks={isFilter ? filteredTasks : allTasks} completeTask={completeTask} deleteTask={deleteTask} />
+              <WishList 
+              tasks={isFilter ? filteredTasks : allTasks} 
+              completeTask={completeTask} 
+              deleteTask={deleteTask} 
+              updateTask={updateTask} 
+              recoverTask={recoverTask}/>
             </div>
           </div>
         )
