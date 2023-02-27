@@ -1,12 +1,12 @@
-.tarea-formulario {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+@use "../../abstracts/variables" as var;
 
-}
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 
-.tarea-input {
+  &__input {
     width: 350px;
     font-size: 18px;
     background-color: white;
@@ -14,9 +14,14 @@
     border-radius: 4px 0 0 4px;
     outline: none;
     border: none;
-}
 
-.tarea-boton {
+    @media screen and (max-width: 510px) {
+      margin-bottom: 20px;
+      width: 95%;
+    }
+  }
+
+  &__submit {
     padding: 15px;
     font-size: 18px;
     font-family: Roboto, sans-serif;
@@ -25,19 +30,13 @@
     cursor: pointer;
     outline: none;
     background-color: #61DAFB;
-    color:#000000;
+    color: #000000;
     text-transform: capitalize;
-}
-
-@media screen and (max-width: 510px) {
-    .tarea-formulario {
-        flex-wrap: wrap;
-        flex-flow: column wrap;
-    }
-    .tarea-input {
-        margin-bottom: 20px;
-    }
-    .tarea-input {
-        width: 95%;
-    }
   }
+
+
+  @media screen and (max-width: 510px) {
+    flex-wrap: wrap;
+    flex-flow: column wrap;
+  }
+}
