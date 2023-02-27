@@ -1,13 +1,13 @@
 import Cover from './componentes/Cover';
-import Main from './componentes/Main';
 import { WishProvider } from './context/WishContext';
+import Router from './router/Router';
 
 function App() {
   return (
     <>
       <Cover />
       <WishProvider>
-        <Main />
+          <Router />
       </WishProvider>
     </>
   );

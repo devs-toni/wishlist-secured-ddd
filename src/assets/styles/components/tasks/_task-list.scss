@@ -15,7 +15,7 @@
 
   &__title {
     font-size: 4em;
-    font-weight:  lighter;
+    font-weight: lighter;
     margin-bottom: 30px;
     color: white;
     letter-spacing: 4px;
@@ -23,6 +23,7 @@
 
   &__main {
     width: 40%;
+    min-width: 600px;
     min-height: 60vh;
     background-color: #fff;
     margin: 10px;
@@ -46,6 +47,78 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
+    }
+
+    .filter {
+      width: 40%;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2em;
+      position: absolute;
+      bottom: 0;
+
+      &__items {
+        width: auto;
+        text-align: left;
+        opacity: .5;
+        font-weight: 550;
+      }
+
+      &__type {
+        width: auto;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+
+        a {
+          transition: all .5s ease;
+          cursor: pointer;
+          margin-right: 20px;
+          opacity: .5;
+          color: black;
+          font-weight: 550;
+
+          &:hover {
+            opacity: 1;
+            transform: scale(1.1);
+          }
+
+          &:last-child {
+            margin: 0;
+          }
+
+          &.show {
+            color: rgb(101, 101, 255);
+          }
+        }
+      }
+
+      &__clear {
+        width: auto;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+
+        p {
+          transition: all .3s ease;
+          cursor: pointer;
+          margin-right: 20px;
+          opacity: .5;
+          font-weight: 550;
+
+          &:hover {
+            opacity: 1;
+          }
+
+          &:last-child {
+            margin: 0;
+          }
+        }
+      }
     }
   }
 }

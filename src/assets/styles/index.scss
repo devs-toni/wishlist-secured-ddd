@@ -1,5 +1,6 @@
 @use "./components/tasks/task-list";
 @use "./components/cover";
+@use "./components/page404";
 @use "./abstracts/variables";
 
 * {
@@ -20,4 +21,9 @@ body {
     overflow: hidden;
     margin-top: 0;
   }
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }

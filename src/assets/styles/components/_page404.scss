@@ -1,0 +1,136 @@
+@use '../abstracts/variables' as var;
+
+#notfound {
+  position: relative;
+  height: 100vh;
+
+  .notfound {
+    position: absolute;
+    left: 50%;
+    top: 70%;
+    max-width: 900px;
+    width: 100%;
+    padding-left: 190px;
+    line-height: 1.4;
+    padding: 40px;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+
+    &__content {
+      margin-left: 50px;
+
+      h2 {
+        color: rgb(198, 116, 209);
+        font-family: "Raleway", sans-serif;
+        font-size: 38px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2.5px;
+        margin-top: 0;
+
+
+        @media screen and (max-width: 900px) {
+          font-size: 26px;
+        }
+      }
+
+      p {
+        font-family: "Raleway", sans-serif;
+        font-size: 22px;
+        font-weight: 400;
+        margin-top: 0;
+        margin-bottom: 15px;
+        color: rgb(198, 116, 209);
+
+        @media screen and (max-width: 900px) {
+          font-size: 18px;
+        }
+      }
+
+      a {
+        font-family: "Raleway", sans-serif;
+        font-size: 14px;
+        text-decoration: none;
+        text-transform: uppercase;
+        background: #d3cece;
+        display: inline-block;
+        padding: 15px 30px;
+        border-radius: 40px;
+        color: #292929;
+        font-weight: 700;
+        -webkit-box-shadow: 0px 4px 15px -5px rgba(0, 0, 0, 0.3);
+        box-shadow: 0px 4px 15px -5px rgba(0, 0, 0, 0.3);
+        -webkit-transition: 0.2s all;
+        transition: 0.2s all;
+        cursor: pointer;
+
+        &:hover {
+          background-color: rgb(198, 116, 209);         
+        }
+
+        @media screen and (max-width: 900px) {
+          font-size: 16px;
+        }
+      }
+
+      @media screen and (max-width: 900px) {
+        width: 50%;
+        text-align: center;
+        margin-top: 50px;
+        margin-left: 0;
+      }
+    }
+
+    &__notfound-404 {
+      width: 100%;
+      height: 150px;
+
+      h1 {
+        font-family: "Passion One", cursive;
+        color: rgb(198, 116, 209);
+        font-size: 150px;
+        letter-spacing: 15.5px;
+        margin: 0px;
+        font-weight: 900;
+        position: absolute;
+        top: 0;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+
+        @media screen and (max-width: 900px) {
+          font-size: 100px;
+        }
+      }
+
+      @media screen and (max-width: 900px) {
+        position: relative;
+        width: 100%;
+        margin-bottom: 15px;
+      }
+
+      @media screen and (max-width: 480px) {
+        position: relative;
+        width: 100%;
+        margin-bottom: 15px;
+      }
+    }
+
+    @media screen and (max-width: 900px) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    @media screen and (max-width: 480px) {
+      text-align: center;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+}

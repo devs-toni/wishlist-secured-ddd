@@ -1,7 +1,13 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
+import { useWishes } from '../context/WishContext';
 import Task from './Task';
 
 export default function WishList({ tasks, completeTask, deleteTask }) {
+
+  const {  functions, filters } = useWishes();
+  const { filter } = filters;
+  const { getTotalLeftTasks, deleteAllTasks, deleteCompletedTasks } = functions;
 
   return (
     <>
@@ -18,6 +24,18 @@ export default function WishList({ tasks, completeTask, deleteTask }) {
             />
           )
         }
+        <div className='filter'>
+          <div className="filter__items">{getTotalLeftTasks()} items left</div>
+          <div className="filter__type">
+            <NavLink to="/" className={filter === "all" && "show"}>All</NavLink>
+            <NavLink to="/filter/active" className={filter === "active" && "show"}>Active</NavLink>
+            <NavLink to="/filter/completed" className={filter === "completed" && "show"}>Completed</NavLink>
+          </div>
+          <div className="filter__clear">
+            <p onClick={deleteCompletedTasks}>Clear Completed</p>
+            <p onClick={deleteAllTasks}>Clear All</p>
+          </div>
+        </div>
       </div>
     </>
   );
