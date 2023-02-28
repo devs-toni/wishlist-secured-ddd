@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import Main from '../componentes/Main'
+import Main from '../componentes/page/Main'
 import Page404 from '../componentes/Page404'
 
 const Router = () => {

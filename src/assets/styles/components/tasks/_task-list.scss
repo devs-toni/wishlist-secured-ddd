@@ -103,6 +103,7 @@
           opacity: .5;
           color: black;
           font-weight: 550;
+          font-size: 1.1em;
 
           @media screen and (max-width: 320px) {
             font-size: .9em;
@@ -119,6 +120,10 @@
 
           &.show {
             color: rgb(101, 101, 255);
+          }
+
+          &.not-empty {
+            color: red;
           }
         }
       }
