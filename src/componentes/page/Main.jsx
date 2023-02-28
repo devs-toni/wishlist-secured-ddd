@@ -48,7 +48,7 @@ const Main = () => {
 
   return (
     <div className="wish-list">
-      <h1 className='wish-list__title'>TODOLIST</h1>
+      <h1 className='wish-list__title'>TODO LIST</h1>
       <Form onSubmit={addTask} />
       <div className='wish-list__main'>
         <TaskList
