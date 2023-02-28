@@ -1,7 +1,7 @@
 import { faClose, faCheck, faPencil, faSave } from "@fortawesome/free-solid-svg-icons";
 import { useTasks } from "../../../context/TaskContext";
 import { PropTypes } from 'prop-types';
-import ActionIcon from "./ActionIcon";
+import { ActionIcon } from "../../index";
 
 export default function Task({ id, text, isCompleted, completeTask, deleteTask, updateTask, recoverTask }) {
 

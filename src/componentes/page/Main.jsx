@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
-import TaskList from '../tasks/TaskList';
-import Form from '../tasks/Form';
+import { TaskList, Form } from '../index';
 import { useTasks } from '../../context/TaskContext';
 import { useParams, useNavigate } from 'react-router-dom';
 

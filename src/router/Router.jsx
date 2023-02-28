@@ -1,7 +1,6 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import Main from '../componentes/page/Main'
-import Page404 from '../componentes/Page404'
+import { Main, Page404 } from '../componentes/index';
 
 const Router = () => {
   return (
@@ -10,7 +9,7 @@ const Router = () => {
       <Route path="/" >
         <Route index element={<Main />} />
         <Route path="filter">
-          <Route path=":type" element={<Main />}/>
+          <Route path=":type" element={<Main />} />
         </Route>
       </Route>
       <Route path="*" element={<Page404 />}></Route>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTasks } from '../../context/TaskContext';
-import Task from './task/Task';
+import { Task } from '../index';
 import PropTypes from 'prop-types';
 
 export default function TaskList({ tasks, completeTask, deleteTask, updateTask, recoverTask }) {
