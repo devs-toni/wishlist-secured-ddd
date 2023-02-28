@@ -86,8 +86,13 @@
       width: 30px;
       height: 30px;
       margin: 5px;
-      transition: all .5s ease;
+      transition: all .6s ease;
+      transition: visibility 0s;
       cursor: pointer;
+
+      &.no-visible {
+        visibility: hidden;
+      }
 
       @media screen and (max-width: 1500px) {
         width: 20px;

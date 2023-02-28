@@ -13,7 +13,7 @@ export default function Task({ id, text, isCompleted, completeTask, deleteTask, 
   const isTrashStyle = (property) => inTrash ? `no-${property}` : "";
   const isCompletedStyle = isCompleted ? "completed" : "";
   
-  const updateIcon = (!inTrash && !isCompleted) ? <ActionIcon icon={faPencil} clas={iconClas} func={updateTask} id={id} /> : <></>;
+  const updateIcon = <ActionIcon icon={faPencil} clas={`${iconClas} ${!inTrash && !isCompleted ? '' : 'no-visible'}`} func={updateTask} id={id} />
   const stateIcon = isCompleted ?  <ActionIcon icon={faCheck} clas="mark__completed" /> : <></>;
   const mainIcons = !inTrash
     ?
