@@ -9,8 +9,8 @@
   align-items: center;
 
   @media screen and (max-width: 800px) {
-    width: 100vw;
-    min-width: 100vw;
+    width: 95vw;
+    min-width: 95vw;
   }
 
   &__input {
@@ -19,7 +19,7 @@
     font-weight: 500;
     background-color: white;
     padding: 24px 42px 24px 42px;
-    border-radius: 4px 0 0 4px;
+    border-radius: 6px;
     outline: none;
     border: none;
     margin-bottom: 20px;
@@ -28,7 +28,7 @@
 
     @media screen and (max-width: 510px) {
       margin-bottom: 20px;
-      width: 95%;
+      width: 95vw;
     }
   }
 

@@ -54,7 +54,7 @@ const Main = () => {
         &&
         (
           <div className="wish-list">
-            <h1 className='wish-list__title'>WISHLIST</h1>
+            <h1 className='wish-list__title'>TODOLIST</h1>
             <Form onSubmit={addTask} />
             <div className='wish-list__main'>
               <WishList 
@@ -72,4 +72,4 @@ const Main = () => {
   )
 }
 
-export default Main
+export default Main;

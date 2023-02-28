@@ -67,7 +67,7 @@ export const WishProvider = ({ children }) => {
           title: 'Error...',
           text: "Name can't be empty!",
         })
-      } else if (name.length < 4) {
+      } else if (name.length < 2) {
         await Swal.fire({
           icon: 'error',
           title: 'Error...',

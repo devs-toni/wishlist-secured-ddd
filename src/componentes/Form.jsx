@@ -23,7 +23,7 @@ export default function Form({ onSubmit }) {
         title: 'Error...',
         text: "Name can't be empty!",
       })
-    } else if (inputTask.length < 4) {
+    } else if (inputTask.length < 2) {
       Swal.fire({
         icon: 'error',
         title: 'Error...',
