@@ -60,22 +60,47 @@ export const WishProvider = ({ children }) => {
     const indexTask = tasks.findIndex(t => t.id === id);
     const taskToUpdate = allTasks.filter(t => t.id === id)[0];
 
-    const { value: text } = await Swal.fire({
-      title: 'Update Task',
-      input: 'text',
-      inputLabel: "Enter the new name",
-      inputValue: taskToUpdate.text
-    });
-
-    if (text) {
-      taskToUpdate.text = text;
-      tasks[indexTask] = taskToUpdate;
-      setAllTasks([...tasks]);
-      Toast.fire({
-        icon: 'success',
-        title: 'Name modified successfully'
-      })
+    const handleSubmit = async (name) => {
+      if (!name) {
+        await Swal.fire({
+          icon: 'error',
+          title: 'Error...',
+          text: "Name can't be empty!",
+        })
+      } else if (name.length < 4) {
+        await Swal.fire({
+          icon: 'error',
+          title: 'Error...',
+          text: "Name needs at least 4 characters",
+        });
+      } else {
+        return true;
+      }
+      return false;
     }
+    let name = '';
+    let validation = false;
+
+    while (!validation) {
+      const { value: newName } = await Swal.fire({
+        title: 'Update Task',
+        input: 'text',
+        inputLabel: "Enter the new name",
+        inputValue: taskToUpdate.text,
+        allowOutsideClick: false,
+        allowEscapeKey: false
+      });
+      name = newName
+      validation = await handleSubmit(name);
+    }
+
+    taskToUpdate.text = name;
+    tasks[indexTask] = taskToUpdate;
+    setAllTasks([...tasks]);
+    Toast.fire({
+      icon: 'success',
+      title: 'Name modified successfully'
+    })
   }
 
   const recoverTask = (id) => {
@@ -92,7 +117,7 @@ export const WishProvider = ({ children }) => {
       Swal.fire(
         'Information',
         'The trash is empty . . .',
-        'question'
+        'info'
       );
       return;
     }
@@ -123,7 +148,7 @@ export const WishProvider = ({ children }) => {
       Swal.fire(
         'Information',
         'The trash is empty . . .',
-        'question'
+        'info'
       );
       return;
     }
@@ -152,11 +177,11 @@ export const WishProvider = ({ children }) => {
       Swal.fire(
         'Information',
         'The trash is empty . . .',
-        'question'
+        'info'
       );
       return;
     }
-    
+
     Toast.fire({
       icon: 'success',
       title: 'All tasks recovered succesfully'
@@ -174,7 +199,7 @@ export const WishProvider = ({ children }) => {
       Swal.fire(
         'Information',
         "There aren't completed tasks to remove . . .",
-        'question'
+        'info'
       );
       return;
     }

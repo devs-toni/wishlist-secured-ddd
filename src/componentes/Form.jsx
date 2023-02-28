@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Swal from 'sweetalert2';
 import { v4 as uuidv4 } from 'uuid';
 
 export default function Form({ onSubmit }) {
@@ -11,14 +12,27 @@ export default function Form({ onSubmit }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-      const newTask = {
-        id: uuidv4(),
-        text: inputTask,
-        isCompleted: false
-      }
+    const newTask = {
+      id: uuidv4(),
+      text: inputTask,
+      isCompleted: false
+    }
+    if (inputTask.length === 0) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error...',
+        text: "Name can't be empty!",
+      })
+    } else if (inputTask.length < 4) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error...',
+        text: "Name needs at least 4 characters",
+      })
+    } else {
       setInputTask('');
       onSubmit(newTask);
-    
+    }
   };
 
   return (
