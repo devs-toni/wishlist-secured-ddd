@@ -1,6 +1,6 @@
 # WishList
 
-This project is the implementation of a wishlist where you can manage your tasks. It has been developed with React using almost all react hooks and react router.
+This project is the implementation of a wishlist where you can manage your tasks. It has been developed with React using almost all react hooks and react router and SASS for the styles.
 
 You can see it running in:
 
