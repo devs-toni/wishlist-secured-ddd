@@ -11,7 +11,7 @@ const Router = () => {
         <Route path="filter">
           <Route path=":type" element={<Main />} />
         </Route>
-      <Route path="*" element={<Page404 />}></Route>
+        <Route path="*" element={<Page404 />}></Route>
       </Route>
     </Routes>
   )
