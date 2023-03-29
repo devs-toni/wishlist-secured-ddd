@@ -1,15 +1,16 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { Main, Page404 } from '../componentes/index';
+import { Login, Main, Page404 } from '../componentes/index';
 
 const Router = () => {
   return (
     <Routes>
-
       <Route path="/" >
-        <Route index element={<Main />} />
-        <Route path="filter">
-          <Route path=":type" element={<Main />} />
+        <Route index element={<Login />} />
+        <Route path="list" element={<Main />}>
+          <Route path="filter">
+            <Route path=":type" element={<Main />} />
+          </Route>
         </Route>
         <Route path="*" element={<Page404 />}></Route>
       </Route>
@@ -17,4 +18,4 @@ const Router = () => {
   )
 }
 
-export default Router
+export default Router;

@@ -2,6 +2,7 @@
 @use "./components/cover";
 @use "./components/page404";
 @use "./abstracts/variables";
+@import "~bootstrap/scss/bootstrap";
 
 * {
   margin: 0;

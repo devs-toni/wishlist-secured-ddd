@@ -5,7 +5,6 @@ import Router from './router/Router';
 function App() {
   return (
     <>
-      <Cover />
       <TaskProvider>
           <Router />
       </TaskProvider>

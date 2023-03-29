@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { TaskList, Form } from '../index';
+import { TaskList, Form, Login, Cover } from '../index';
 import { useTasks } from '../../context/TaskContext';
 import { useParams, useNavigate } from 'react-router-dom';
 
@@ -46,19 +46,22 @@ const Main = () => {
   }, [type, allTasks, trashTasks]);
 
   return (
-    <div className="wish-list">
-      <h1 className='wish-list__title'>TODO LIST</h1>
-      <Form onSubmit={addTask} />
-      <div className='wish-list__main'>
-        <TaskList
-          tasks={isFilter ? filteredTasks : allTasks}
-          completeTask={completeTask}
-          deleteTask={deleteTask}
-          updateTask={updateTask}
-          recoverTask={recoverTask}
-        />
+    <>
+      <Cover />
+      <div className="wish-list">
+        <h1 className='wish-list__title'>TODO LIST</h1>
+        <Form onSubmit={addTask} />
+        <div className='wish-list__main'>
+          <TaskList
+            tasks={isFilter ? filteredTasks : allTasks}
+            completeTask={completeTask}
+            deleteTask={deleteTask}
+            updateTask={updateTask}
+            recoverTask={recoverTask}
+          />
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 
