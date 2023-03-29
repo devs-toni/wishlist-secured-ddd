@@ -1,4 +1,11 @@
 export interface ResponseInterface {
-  data: {},
-  state: string
+  data: {} | undefined;
+  state: string;
+  code: number;
+}
+
+export interface NullResponse {
+  data: undefined,
+  state: string,
+  code: number
 }

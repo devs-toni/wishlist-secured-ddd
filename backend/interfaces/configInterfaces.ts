@@ -7,4 +7,5 @@ export interface Configuration {
   dev: ParametersConfig;
   deploy: ParametersConfig;
 }
+
 export type env = "dev" | "deploy";
