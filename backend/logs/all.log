@@ -69,3 +69,11 @@
 2023-03-30 04:12 http: 	POST /getByToken 404: 150- 1.529 ms - API Server
 2023-03-30 04:13 http: 	POST /getByToken 404: 150- 4.128 ms - API Server
 2023-03-30 04:15 http: 	POST /users/getByToken -: -- - ms - API Server
+2023-03-30 11:18 http: 	GET /users/save/hola 200: 93- 32.178 ms - API Server
+2023-03-30 11:19 http: 	POST /users/getByToken -: -- - ms - API Server
+2023-03-30 11:19 http: 	GET /users/save/hola 204: -- 7.254 ms - API Server
+2023-03-30 11:20 http: 	GET /users/save/hola 204: -- 4.141 ms - API Server
+2023-03-30 11:21 http: 	GET /users/save/holaa 200: 93- 7.118 ms - API Server
+2023-03-30 11:33 http: 	POST /users/getByToken -: -- - ms - API Server
+2023-03-30 11:42 http: 	GET /users/save/hola 204: -- 3.981 ms - API Server
+2023-03-30 11:43 http: 	GET /users/save/hola2 200: 93- 7.873 ms - API Server

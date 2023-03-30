@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { BACKEND_URL } from '../../helpers/config';
 
-const Login = () => {
+const Register = () => {
 
   const [form, setForm] = useState({ name: "", password: "" });
   const { login, setError, authState } = useAuth();
@@ -58,4 +58,4 @@ const Login = () => {
   );
 }
 
-export default Login;
+export default Register;

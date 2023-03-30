@@ -22,10 +22,10 @@ export default function TaskList({ tasks, completeTask, deleteTask, updateTask, 
       <div className='filter'>
         <div className="filter__items">{leftItems} items left</div>
         <nav className="filter__type">
-          <NavLink to="/" className={isActive("all")}>All</NavLink>
-          <NavLink to="/filter/active" className={isActive("active")}>Active</NavLink>
-          <NavLink to="/filter/completed" className={isActive("completed")}>Completed</NavLink>
-          <NavLink to="/filter/trash" className={`${isActive("trash")} ${hasItems}`}>Trash</NavLink>
+          <NavLink to="/list" className={isActive("all")}>All</NavLink>
+          <NavLink to="/list/filter/active" className={isActive("active")}>Active</NavLink>
+          <NavLink to="/list/filter/completed" className={isActive("completed")}>Completed</NavLink>
+          <NavLink to="/list/filter/trash" className={`${isActive("trash")} ${hasItems}`}>Trash</NavLink>
         </nav>
         <div className="filter__clear">
           {
