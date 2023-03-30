@@ -4,8 +4,8 @@ export interface ParametersConfig {
 }
 
 export interface Configuration {
-  dev: ParametersConfig;
-  deploy: ParametersConfig;
+  development: ParametersConfig;
+  deployment: ParametersConfig;
 }
 
-export type env = "dev" | "deploy";
+export type env = "development" | "deployment";

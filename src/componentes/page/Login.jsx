@@ -1,18 +1,32 @@
 import axios from 'axios';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 import { BACKEND_URL } from '../../helpers/config';
 
 const Login = () => {
 
   const [name, setName] = useState('');
+  const { login, setError, authState } = useAuth();
+  const navigate = useNavigate();
 
   const handleInput = ({ target }) => {
     setName(target.value);
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    axios.get(`${BACKEND_URL}/users/save/${name}`);
+    await axios.get(`${BACKEND_URL}/users/save/${name}`)
+      .then(({ data, status }) => {
+
+        if (status === 204) {
+          setError("Username already exists!");
+        } else {
+          login(name, data.token);
+          navigate('/list');
+        }
+      }
+      );
   }
 
   return (
@@ -29,6 +43,7 @@ const Login = () => {
         onChange={handleInput}
         type='text'
       />
+      <p className='text-danger'>{authState.error}</p>
       <input type="submit" className='mb-4 w-100 bg-danger' value="Start" />
     </form>
   );

@@ -3,8 +3,9 @@ let router: Router = Router();
 
 const UserController = require("../controllers/Users");
 
-const q: string = "/users/";
+const q: string = "/users";
 
-router.get(`${q}save/:name`, UserController.save);
+router.get(`${q}/save/:name`, UserController.save);
+router.post(`${q}/getByToken`, UserController.getByToken);
 
 module.exports = router;

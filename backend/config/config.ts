@@ -3,10 +3,10 @@ require("dotenv").config();
 const { NODE_MODE, PORT, DB_ADDRESS, DB_NAME, DB_PORT } = process.env;
 
 const DB_HOST: string = `${DB_ADDRESS as string}${DB_PORT}${DB_NAME}`;
-const ENV: env = (NODE_MODE as env) || "dev";
+export const ENV: env = (NODE_MODE as env) || "development";
 
 const CONFIG: Configuration = {
-  dev: {
+  development: {
     application: {
       PORT: (PORT as unknown as number) || 4000,
       URL: "http://localhost:3000",
@@ -15,7 +15,7 @@ const CONFIG: Configuration = {
       URL: DB_HOST,
     },
   },
-  deploy: {
+  deployment: {
     application: {
       PORT: (PORT as unknown as number) || 4000,
       URL: "https://tasks.arcprojects.es:",
