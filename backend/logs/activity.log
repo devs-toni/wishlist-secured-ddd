@@ -1,125 +1,203 @@
-2023-03-30 00:51:55.359Z LOGGER: Connection established with MongoDB
-2023-03-30 00:52:25.615Z LOGGER: Connection established with MongoDB
-2023-03-30 00:52:50.868Z LOGGER: Server listening on port 4000
-2023-03-30 00:52:50.886Z LOGGER: Connection established with MongoDB
-2023-03-30 00:53:51.922Z LOGGER: User already exist!
-2023-03-30 00:54:02.997Z LOGGER: User saved succesfully!
-2023-03-30 00:54:22.864Z LOGGER: User saved succesfully!
-2023-03-30 00:54:58.610Z LOGGER: User saved succesfully!
-2023-03-30 00:57:07.434Z LOGGER: Server listening on port 4000
-2023-03-30 00:57:07.455Z LOGGER: Connection established with MongoDB
-2023-03-30 00:57:51.696Z LOGGER: Server listening on port 4000
-2023-03-30 00:57:51.717Z LOGGER: Connection established with MongoDB
-2023-03-30 00:58:00.527Z LOGGER: User saved succesfully!
-2023-03-30 00:58:23.912Z LOGGER: User saved succesfully!
-2023-03-30 01:01:52.005Z LOGGER: Server listening on port 4000
-2023-03-30 01:01:52.028Z LOGGER: Connection established with MongoDB
-2023-03-30 01:01:57.043Z LOGGER: User saved succesfully!
-2023-03-30 01:04:58.689Z LOGGER: Server listening on port 4000
-2023-03-30 01:04:58.708Z LOGGER: Connection established with MongoDB
-2023-03-30 01:05:23.913Z LOGGER: Server listening on port 4000
-2023-03-30 01:05:23.932Z LOGGER: Connection established with MongoDB
-2023-03-30 01:06:10.877Z LOGGER: Server listening on port 4000
-2023-03-30 01:06:10.897Z LOGGER: Connection established with MongoDB
-2023-03-30 01:06:34.185Z LOGGER: User saved succesfully!
-2023-03-30 01:12:17.260Z LOGGER: User saved succesfully!
-2023-03-30 01:13:45.944Z LOGGER: User saved succesfully!
-2023-03-30 01:13:51.100Z LOGGER: User saved succesfully!
-2023-03-30 01:22:10.356Z LOGGER: User saved succesfully!
-2023-03-30 01:22:16.747Z LOGGER: User already exist!
-2023-03-30 01:22:32.947Z LOGGER: User already exist!
-2023-03-30 01:22:49.352Z LOGGER: User already exist!
-2023-03-30 01:23:45.602Z LOGGER: Server listening on port 4000
-2023-03-30 01:23:45.625Z LOGGER: Connection established with MongoDB
-2023-03-30 01:23:52.885Z LOGGER: User saved succesfully!
-2023-03-30 01:23:58.418Z LOGGER: User already exist!
-2023-03-30 01:27:52.726Z LOGGER: User already exist!
-2023-03-30 01:28:14.003Z LOGGER: User already exist!
-2023-03-30 01:29:16.079Z LOGGER: Server listening on port 4000
-2023-03-30 01:29:16.103Z LOGGER: Connection established with MongoDB
-2023-03-30 01:30:12.146Z LOGGER: User already exist!
-2023-03-30 01:31:42.528Z LOGGER: User already exist!
-2023-03-30 01:32:06.241Z LOGGER: User already exist!
-2023-03-30 01:32:33.158Z LOGGER: User already exist!
-2023-03-30 01:32:34.605Z LOGGER: User already exist!
-2023-03-30 01:34:04.291Z LOGGER: Server listening on port 4000
-2023-03-30 01:34:04.312Z LOGGER: Connection established with MongoDB
-2023-03-30 01:34:07.790Z LOGGER: User already exist!
-2023-03-30 01:34:29.503Z LOGGER: Server listening on port 4000
-2023-03-30 01:34:29.522Z LOGGER: Connection established with MongoDB
-2023-03-30 01:34:31.067Z LOGGER: User already exist!
-2023-03-30 01:34:53.787Z LOGGER: User already exist!
-2023-03-30 01:35:24.254Z LOGGER: User already exist!
-2023-03-30 01:35:40.899Z LOGGER: User already exist!
-2023-03-30 01:36:43.463Z LOGGER: Server listening on port 4000
-2023-03-30 01:36:43.485Z LOGGER: Connection established with MongoDB
-2023-03-30 01:37:20.048Z LOGGER: Server listening on port 4000
-2023-03-30 01:37:20.066Z LOGGER: Connection established with MongoDB
-2023-03-30 01:37:24.259Z LOGGER: User already exist!
-2023-03-30 01:37:31.647Z LOGGER: User saved succesfully!
-2023-03-30 01:38:39.415Z LOGGER: Server listening on port 4000
-2023-03-30 01:38:39.434Z LOGGER: Connection established with MongoDB
-2023-03-30 01:39:00.573Z LOGGER: Server listening on port 4000
-2023-03-30 01:39:00.596Z LOGGER: Connection established with MongoDB
-2023-03-30 01:39:09.844Z LOGGER: Server listening on port 4000
-2023-03-30 01:39:09.867Z LOGGER: Connection established with MongoDB
-2023-03-30 01:41:52.382Z LOGGER: 
-2023-03-30 01:43:33.914Z LOGGER: 
-2023-03-30 01:43:38.552Z LOGGER: 
-2023-03-30 01:44:08.202Z LOGGER: 
-2023-03-30 01:44:42.538Z LOGGER: 
-2023-03-30 01:45:37.873Z LOGGER: 
-2023-03-30 01:46:55.382Z LOGGER: 
-2023-03-30 01:47:21.480Z LOGGER: 
-2023-03-30 01:48:23.626Z LOGGER: 
-2023-03-30 01:49:22.017Z LOGGER: 
-2023-03-30 01:49:38.266Z LOGGER: 
-2023-03-30 01:50:17.749Z LOGGER: 
-2023-03-30 01:50:31.523Z LOGGER: User saved succesfully!
-2023-03-30 02:03:58.728Z LOGGER: Server listening on port 4000
-2023-03-30 02:03:58.748Z LOGGER: Connection established with MongoDB
-2023-03-30 02:04:42.561Z LOGGER: Server listening on port 4000
-2023-03-30 02:04:42.582Z LOGGER: Connection established with MongoDB
-2023-03-30 02:07:00.984Z LOGGER: Server listening on port 4000
-2023-03-30 02:07:01.003Z LOGGER: Connection established with MongoDB
-2023-03-30 02:07:18.545Z LOGGER: Server listening on port 4000
-2023-03-30 02:07:18.567Z LOGGER: Connection established with MongoDB
-2023-03-30 02:09:36.077Z LOGGER: Server listening on port 4000
-2023-03-30 02:09:36.099Z LOGGER: Connection established with MongoDB
-2023-03-30 02:09:42.361Z LOGGER: Server listening on port 4000
-2023-03-30 02:09:42.382Z LOGGER: Connection established with MongoDB
-2023-03-30 02:11:14.216Z LOGGER: Server listening on port 4000
-2023-03-30 02:11:14.236Z LOGGER: Connection established with MongoDB
-2023-03-30 02:11:51.158Z LOGGER: Server listening on port 4000
-2023-03-30 02:11:51.186Z LOGGER: Connection established with MongoDB
-2023-03-30 02:11:56.826Z LOGGER: Server listening on port 4000
-2023-03-30 02:11:56.850Z LOGGER: Connection established with MongoDB
-2023-03-30 02:12:50.269Z LOGGER: Server listening on port 4000
-2023-03-30 02:12:50.289Z LOGGER: Connection established with MongoDB
-2023-03-30 02:13:20.725Z LOGGER: Server listening on port 4000
-2023-03-30 02:13:20.746Z LOGGER: Connection established with MongoDB
-2023-03-30 02:14:36.607Z LOGGER: Server listening on port 4000
-2023-03-30 02:14:36.629Z LOGGER: Connection established with MongoDB
-2023-03-30 02:14:51.453Z LOGGER: Server listening on port 4000
-2023-03-30 02:14:51.474Z LOGGER: Connection established with MongoDB
-2023-03-30 02:15:08.226Z LOGGER: Server listening on port 4000
-2023-03-30 02:15:08.247Z LOGGER: Connection established with MongoDB
-2023-03-30 09:18:07.576Z LOGGER: Server listening on port 4000
-2023-03-30 09:18:07.595Z LOGGER: Connection established with MongoDB
-2023-03-30 09:18:14.128Z LOGGER: User saved succesfully!
-2023-03-30 09:19:18.634Z LOGGER: 
-2023-03-30 09:20:41.059Z LOGGER: 
-2023-03-30 09:21:45.653Z LOGGER: User saved succesfully!
-2023-03-30 09:42:58.987Z LOGGER: 
-2023-03-30 09:43:38.722Z LOGGER: User saved succesfully!
-2023-03-30 09:51:51.502Z LOGGER: Server listening on port 4000
-2023-03-30 09:51:51.523Z LOGGER: Connection established with MongoDB
-2023-03-30 09:52:09.609Z LOGGER: Server listening on port 4000
-2023-03-30 09:52:09.640Z LOGGER: Connection established with MongoDB
-2023-03-30 09:52:56.394Z LOGGER: Server listening on port 4000
-2023-03-30 09:52:56.412Z LOGGER: Connection established with MongoDB
-2023-03-30 13:07:19.037Z LOGGER: Server listening on port 4000
-2023-03-30 13:07:39.490Z LOGGER: Server listening on port 4000
-2023-03-30 13:08:16.327Z LOGGER: Server listening on port 4000
-2023-03-30 13:10:38.821Z LOGGER: Server listening on port 4000
-2023-03-30 13:10:38.841Z LOGGER: Connection established with MongoDB
+2023-03-30 22:12:14.993Z LOGGER: User saved succesfully!
+2023-03-30 22:24:20.386Z LOGGER: Server listening on port 4000
+2023-03-30 22:24:20.405Z LOGGER: Connection established with MongoDB
+2023-03-30 22:26:24.553Z LOGGER: Server listening on port 4000
+2023-03-30 22:26:24.575Z LOGGER: Connection established with MongoDB
+2023-03-30 22:27:31.572Z LOGGER: Server listening on port 4000
+2023-03-30 22:27:31.597Z LOGGER: Connection established with MongoDB
+2023-03-30 22:30:29.608Z LOGGER: Server listening on port 4000
+2023-03-30 22:30:29.629Z LOGGER: Connection established with MongoDB
+2023-03-30 22:31:07.371Z LOGGER: Server listening on port 4000
+2023-03-30 22:31:07.391Z LOGGER: Connection established with MongoDB
+2023-03-30 22:31:32.519Z LOGGER: Server listening on port 4000
+2023-03-30 22:31:32.540Z LOGGER: Connection established with MongoDB
+2023-03-30 22:31:52.903Z LOGGER: Server listening on port 4000
+2023-03-30 22:31:52.925Z LOGGER: Connection established with MongoDB
+2023-03-30 22:32:25.909Z LOGGER: Server listening on port 4000
+2023-03-30 22:32:25.928Z LOGGER: Connection established with MongoDB
+2023-03-30 22:32:40.553Z LOGGER: Server listening on port 4000
+2023-03-30 22:32:40.572Z LOGGER: Connection established with MongoDB
+2023-03-30 22:33:02.995Z LOGGER: Server listening on port 4000
+2023-03-30 22:33:03.015Z LOGGER: Connection established with MongoDB
+2023-03-30 22:33:19.187Z LOGGER: Server listening on port 4000
+2023-03-30 22:33:19.208Z LOGGER: Connection established with MongoDB
+2023-03-30 22:33:29.340Z LOGGER: Server listening on port 4000
+2023-03-30 22:33:29.361Z LOGGER: Connection established with MongoDB
+2023-03-30 22:34:05.266Z LOGGER: Server listening on port 4000
+2023-03-30 22:34:05.290Z LOGGER: Connection established with MongoDB
+2023-03-30 22:34:14.124Z LOGGER: Server listening on port 4000
+2023-03-30 22:34:14.144Z LOGGER: Connection established with MongoDB
+2023-03-30 22:34:30.039Z LOGGER: Server listening on port 4000
+2023-03-30 22:34:30.058Z LOGGER: Connection established with MongoDB
+2023-03-30 22:34:55.237Z LOGGER: Server listening on port 4000
+2023-03-30 22:34:55.257Z LOGGER: Connection established with MongoDB
+2023-03-30 22:35:08.753Z LOGGER: Server listening on port 4000
+2023-03-30 22:35:08.773Z LOGGER: Connection established with MongoDB
+2023-03-30 22:35:31.353Z LOGGER: Server listening on port 4000
+2023-03-30 22:35:31.375Z LOGGER: Connection established with MongoDB
+2023-03-30 22:35:40.029Z LOGGER: Server listening on port 4000
+2023-03-30 22:35:40.055Z LOGGER: Connection established with MongoDB
+2023-03-30 22:36:25.555Z LOGGER: Server listening on port 4000
+2023-03-30 22:36:25.576Z LOGGER: Connection established with MongoDB
+2023-03-30 22:36:39.989Z LOGGER: Server listening on port 4000
+2023-03-30 22:36:40.012Z LOGGER: Connection established with MongoDB
+2023-03-30 22:37:04.216Z LOGGER: Server listening on port 4000
+2023-03-30 22:37:04.238Z LOGGER: Connection established with MongoDB
+2023-03-30 22:38:24.518Z LOGGER: Server listening on port 4000
+2023-03-30 22:38:24.539Z LOGGER: Connection established with MongoDB
+2023-03-30 22:38:38.413Z LOGGER: Server listening on port 4000
+2023-03-30 22:38:38.435Z LOGGER: Connection established with MongoDB
+2023-03-30 22:39:43.825Z LOGGER: Server listening on port 4000
+2023-03-30 22:39:43.865Z LOGGER: Connection established with MongoDB
+2023-03-30 22:40:46.704Z LOGGER: Server listening on port 4000
+2023-03-30 22:40:46.723Z LOGGER: Connection established with MongoDB
+2023-03-30 22:45:40.018Z LOGGER: Server listening on port 4000
+2023-03-30 22:45:40.040Z LOGGER: Connection established with MongoDB
+2023-03-30 22:46:02.900Z LOGGER: Server listening on port 4000
+2023-03-30 22:46:02.920Z LOGGER: Connection established with MongoDB
+2023-03-30 22:46:19.619Z LOGGER: Server listening on port 4000
+2023-03-30 22:46:19.642Z LOGGER: Connection established with MongoDB
+2023-03-30 22:46:32.039Z LOGGER: Server listening on port 4000
+2023-03-30 22:46:32.058Z LOGGER: Connection established with MongoDB
+2023-03-30 22:47:17.872Z LOGGER: Server listening on port 4000
+2023-03-30 22:47:17.891Z LOGGER: Connection established with MongoDB
+2023-03-30 22:47:30.756Z LOGGER: Server listening on port 4000
+2023-03-30 22:47:30.775Z LOGGER: Connection established with MongoDB
+2023-03-30 22:47:59.244Z LOGGER: Server listening on port 4000
+2023-03-30 22:47:59.270Z LOGGER: Connection established with MongoDB
+2023-03-30 22:50:05.312Z LOGGER: Server listening on port 4000
+2023-03-30 22:50:05.333Z LOGGER: Connection established with MongoDB
+2023-03-30 22:50:05.585Z LOGGER: Login success!
+2023-03-30 22:50:14.042Z LOGGER: Server listening on port 4000
+2023-03-30 22:50:14.063Z LOGGER: Connection established with MongoDB
+2023-03-30 22:50:41.662Z LOGGER: Server listening on port 4000
+2023-03-30 22:50:41.681Z LOGGER: Connection established with MongoDB
+2023-03-30 22:50:46.626Z LOGGER: LOGIN USER -> Invalid Credentials!
+2023-03-30 22:50:52.804Z LOGGER: Login success!
+2023-03-30 22:51:00.941Z LOGGER: Server listening on port 4000
+2023-03-30 22:51:00.961Z LOGGER: Connection established with MongoDB
+2023-03-30 22:51:12.195Z LOGGER: Server listening on port 4000
+2023-03-30 22:51:12.215Z LOGGER: Connection established with MongoDB
+2023-03-30 23:00:28.058Z LOGGER: Server listening on port 4000
+2023-03-30 23:00:28.081Z LOGGER: Connection established with MongoDB
+2023-03-30 23:18:16.687Z LOGGER: Server listening on port 4000
+2023-03-30 23:18:16.718Z LOGGER: Connection established with MongoDB
+2023-03-30 23:18:37.304Z LOGGER: SAVE USER -> Error saving user!
+2023-03-30 23:19:18.742Z LOGGER: Server listening on port 4000
+2023-03-30 23:19:18.766Z LOGGER: Connection established with MongoDB
+2023-03-30 23:19:27.647Z LOGGER: Server listening on port 4000
+2023-03-30 23:19:27.665Z LOGGER: Connection established with MongoDB
+2023-03-30 23:19:31.040Z LOGGER: SAVE USER -> Error saving user!
+2023-03-30 23:20:03.175Z LOGGER: Server listening on port 4000
+2023-03-30 23:20:03.198Z LOGGER: Connection established with MongoDB
+2023-03-30 23:20:05.400Z LOGGER: SAVE USER -> Error saving user!
+2023-03-30 23:20:36.373Z LOGGER: Server listening on port 4000
+2023-03-30 23:20:36.402Z LOGGER: Connection established with MongoDB
+2023-03-30 23:20:38.369Z LOGGER: SAVE USER -> Error saving user!
+2023-03-30 23:20:55.266Z LOGGER: Server listening on port 4000
+2023-03-30 23:20:55.296Z LOGGER: Connection established with MongoDB
+2023-03-30 23:21:43.700Z LOGGER: Server listening on port 4000
+2023-03-30 23:21:43.723Z LOGGER: Connection established with MongoDB
+2023-03-30 23:21:46.045Z LOGGER: User toni1 already exists
+2023-03-30 23:21:59.865Z LOGGER: User admin already exists
+2023-03-30 23:22:15.221Z LOGGER: Login success!
+2023-03-30 23:23:33.045Z LOGGER: Server listening on port 4000
+2023-03-30 23:23:33.066Z LOGGER: Connection established with MongoDB
+2023-03-30 23:24:24.683Z LOGGER: Server listening on port 4000
+2023-03-30 23:24:24.712Z LOGGER: Connection established with MongoDB
+2023-03-30 23:26:05.676Z LOGGER: Server listening on port 4000
+2023-03-30 23:26:05.696Z LOGGER: Connection established with MongoDB
+2023-03-30 23:32:53.080Z LOGGER: Server listening on port 4000
+2023-03-30 23:32:53.101Z LOGGER: Connection established with MongoDB
+2023-03-30 23:33:26.059Z LOGGER: LOGIN USER -> Invalid Credentials!
+2023-03-30 23:33:39.986Z LOGGER: LOGIN USER -> Error when login user!
+2023-03-30 23:33:52.364Z LOGGER: LOGIN USER -> Error when login user!
+2023-03-30 23:34:01.921Z LOGGER: LOGIN USER -> Error when login user!
+2023-03-30 23:34:21.650Z LOGGER: Server listening on port 4000
+2023-03-30 23:34:21.673Z LOGGER: Connection established with MongoDB
+2023-03-30 23:34:24.762Z LOGGER: LOGIN USER -> Error when login user!
+2023-03-30 23:34:34.838Z LOGGER: Server listening on port 4000
+2023-03-30 23:34:34.863Z LOGGER: Connection established with MongoDB
+2023-03-30 23:34:37.820Z LOGGER: LOGIN USER -> Error when login user!
+2023-03-30 23:34:54.636Z LOGGER: Server listening on port 4000
+2023-03-30 23:34:54.658Z LOGGER: Connection established with MongoDB
+2023-03-30 23:34:57.024Z LOGGER: LOGIN USER -> Error when login user!
+2023-03-30 23:35:01.901Z LOGGER: Server listening on port 4000
+2023-03-30 23:35:01.928Z LOGGER: Connection established with MongoDB
+2023-03-30 23:35:03.690Z LOGGER: LOGIN USER -> Error when login user!
+2023-03-30 23:35:32.366Z LOGGER: Server listening on port 4000
+2023-03-30 23:35:32.387Z LOGGER: Connection established with MongoDB
+2023-03-30 23:35:36.188Z LOGGER: LOGIN USER -> Error when login user!
+2023-03-30 23:36:08.844Z LOGGER: Server listening on port 4000
+2023-03-30 23:36:08.874Z LOGGER: Connection established with MongoDB
+2023-03-30 23:36:11.003Z LOGGER: LOGIN USER -> Error when login user!
+2023-03-30 23:36:25.273Z LOGGER: Server listening on port 4000
+2023-03-30 23:36:25.296Z LOGGER: Connection established with MongoDB
+2023-03-30 23:36:27.425Z LOGGER: LOGIN USER -> Error when login user!
+2023-03-30 23:36:35.702Z LOGGER: Server listening on port 4000
+2023-03-30 23:36:35.728Z LOGGER: Connection established with MongoDB
+2023-03-30 23:36:37.545Z LOGGER: LOGIN USER -> Error when login user!
+2023-03-30 23:37:04.639Z LOGGER: Server listening on port 4000
+2023-03-30 23:37:04.665Z LOGGER: Connection established with MongoDB
+2023-03-30 23:37:23.298Z LOGGER: SAVE USER -> Error saving user!
+2023-03-30 23:38:16.065Z LOGGER: LOGIN USER -> Error when login user!
+2023-03-30 23:39:11.741Z LOGGER: Server listening on port 4000
+2023-03-30 23:39:11.766Z LOGGER: Connection established with MongoDB
+2023-03-30 23:39:16.926Z LOGGER: SAVE USER -> Error saving user!
+2023-03-30 23:39:32.086Z LOGGER: Server listening on port 4000
+2023-03-30 23:39:32.105Z LOGGER: Connection established with MongoDB
+2023-03-30 23:39:34.187Z LOGGER: User devs already exists
+2023-03-30 23:39:37.975Z LOGGER: User devs already exists
+2023-03-30 23:39:46.031Z LOGGER: User devs already exists
+2023-03-30 23:39:55.820Z LOGGER: LOGIN USER -> Invalid Credentials!
+2023-03-30 23:40:17.604Z LOGGER: SAVE USER -> Error saving user!
+2023-03-30 23:41:17.866Z LOGGER: Server listening on port 4000
+2023-03-30 23:41:17.888Z LOGGER: Connection established with MongoDB
+2023-03-30 23:41:26.558Z LOGGER: SAVE USER -> Error saving user!
+2023-03-30 23:41:34.542Z LOGGER: Server listening on port 4000
+2023-03-30 23:41:34.581Z LOGGER: Connection established with MongoDB
+2023-03-30 23:41:37.490Z LOGGER: SAVE USER -> Error saving user!
+2023-03-30 23:41:49.675Z LOGGER: Server listening on port 4000
+2023-03-30 23:41:49.697Z LOGGER: Connection established with MongoDB
+2023-03-30 23:41:52.104Z LOGGER: SAVE USER -> Error saving user!
+2023-03-30 23:42:15.879Z LOGGER: Server listening on port 4000
+2023-03-30 23:42:15.901Z LOGGER: Connection established with MongoDB
+2023-03-30 23:42:19.190Z LOGGER: Server listening on port 4000
+2023-03-30 23:42:19.215Z LOGGER: Connection established with MongoDB
+2023-03-30 23:42:48.281Z LOGGER: SAVE USER -> Error saving user!
+2023-03-30 23:46:07.162Z LOGGER: Server listening on port 4000
+2023-03-30 23:46:07.187Z LOGGER: Connection established with MongoDB
+2023-03-30 23:46:14.925Z LOGGER: SAVE USER -> Error saving user!
+2023-03-30 23:48:19.371Z LOGGER: SAVE USER -> Error saving user!
+2023-03-30 23:48:34.112Z LOGGER: Server listening on port 4000
+2023-03-30 23:48:34.136Z LOGGER: Connection established with MongoDB
+2023-03-30 23:48:47.389Z LOGGER: User saved successfully!
+2023-03-30 23:49:35.074Z LOGGER: Server listening on port 4000
+2023-03-30 23:49:35.098Z LOGGER: Connection established with MongoDB
+2023-03-30 23:49:42.607Z LOGGER: User saved successfully!
+2023-03-30 23:49:57.797Z LOGGER: Server listening on port 4000
+2023-03-30 23:49:57.825Z LOGGER: Connection established with MongoDB
+2023-03-30 23:50:16.081Z LOGGER: Server listening on port 4000
+2023-03-30 23:50:16.105Z LOGGER: Connection established with MongoDB
+2023-03-30 23:50:46.309Z LOGGER: User saved successfully!
+2023-03-30 23:50:54.819Z LOGGER: LOGIN USER -> Invalid Credentials!
+2023-03-30 23:51:05.567Z LOGGER: Server listening on port 4000
+2023-03-30 23:51:05.588Z LOGGER: Connection established with MongoDB
+2023-03-30 23:51:25.872Z LOGGER: Login success!
+2023-03-30 23:58:18.658Z LOGGER: Server listening on port 4000
+2023-03-30 23:58:18.682Z LOGGER: Connection established with MongoDB
+2023-03-31 00:04:27.190Z LOGGER: Server listening on port 4000
+2023-03-31 00:04:27.214Z LOGGER: Connection established with MongoDB
+2023-03-31 00:05:05.368Z LOGGER: Server listening on port 4000
+2023-03-31 00:05:05.391Z LOGGER: Connection established with MongoDB
+2023-03-31 00:05:13.554Z LOGGER: Server listening on port 4000
+2023-03-31 00:05:13.574Z LOGGER: Connection established with MongoDB
+2023-03-31 00:06:14.449Z LOGGER: Server listening on port 4000
+2023-03-31 00:06:14.471Z LOGGER: Connection established with MongoDB
+2023-03-31 00:06:26.483Z LOGGER: Server listening on port 4000
+2023-03-31 00:06:26.506Z LOGGER: Connection established with MongoDB
+2023-03-31 00:06:28.692Z LOGGER: Login success!
+2023-03-31 00:07:48.282Z LOGGER: Server listening on port 4000
+2023-03-31 00:07:48.306Z LOGGER: Connection established with MongoDB
+2023-03-31 00:08:03.782Z LOGGER: LOGIN USER -> Invalid Credentials!
+2023-03-31 00:09:05.964Z LOGGER: Login success!

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { BACKEND_URL } from '../../helpers/config';
 
@@ -17,11 +17,11 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post(`${BACKEND_URL}/users/save`, { form })
+    await axios.post(`${BACKEND_URL}/users/login`, { form })
       .then(({ data, status }) => {
 
         if (status === 204) {
-          setError("Username already exists!");
+          setError("Username/Password are not valid!");
         } else {
           login(form.name, data.token);
           navigate('/list');
@@ -54,6 +54,7 @@ const Login = () => {
       />
       <p className='text-danger'>{authState.error}</p>
       <input type="submit" className='mb-4 w-100 bg-danger' value="Start" />
+      <NavLink to='/register'>Register</NavLink>
     </form>
   );
 }

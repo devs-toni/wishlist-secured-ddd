@@ -3,12 +3,11 @@ import { REDUCER_TYPES } from './types';
 import { BACKEND_URL } from '../helpers/config';
 import axios from 'axios';
 
-const getUserByToken = (token) => {
-  axios.post(`${BACKEND_URL}/users/getByToken`, { token }).then(({ data, status }) => console.log(status, data))
-};
-
 const token = JSON.parse(localStorage.getItem('user')) || undefined;
-getUserByToken(token);
+
+token &&
+  axios.post(`${BACKEND_URL}/users/verify`, token)
+    .then((res) => console.log(res));
 
 const AuthContext = createContext();
 export const useAuth = () => {
@@ -23,7 +22,7 @@ export const AuthProvider = ({ children }) => {
 
   const initialState = {
     isAuthenticated: token ? true : false,
-    name: token ? "Antonio" : "",
+    name: token ? "" : "",
     token: token ? token : "",
     error: "",
   }

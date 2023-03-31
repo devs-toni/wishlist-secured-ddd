@@ -1,64 +1,99 @@
-import { randomUUID } from "crypto";
-import { TokenInterface } from "../interfaces/httpInterfaces";
-import { UserInterface } from "../interfaces/userInterface";
 import { writeLog } from "../lib/logger";
-
-const users = require("../models/User");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
+const UserModel = require("../models/User");
+require("dotenv").config();
 
 export const UserService = {
-  save: async (name: string) => {
-    let res: TokenInterface = {
-      token: "",
-      state: "",
-      code: -1,
-    };
+  save: async (name: string, password: string) => {
+    try {
+      const userExists: boolean | undefined = await UserModel.findOne({ name });
 
-    const userExists: boolean | undefined = await users
-      .find({ name })
-      .exec()
-      .then((res: UserInterface) =>
-        Object.keys(res).length > 0 ? true : false
-      )
-      .catch(() => {
-        return undefined;
+      if (userExists) {
+        writeLog(`User ${name} already exists`);
+        return {
+          name: undefined,
+          token: undefined,
+          state: "User already exist. Please login!",
+          code: 209,
+        };
+      }
+
+      const encryptedPassword: string = await bcrypt.hash(password, 10);
+
+      const user = await UserModel.create({
+        name,
+        password: encryptedPassword,
       });
 
-    if (typeof userExists === "undefined") {
-      writeLog("SAVE USER -> Something went wrong with the database connection!");
+      const token = jwt.sign(
+        { user_id: user._id.valueOf(), name },
+        process.env.TOKEN_KEY,
+        {
+          expiresIn: "2h",
+        }
+      );
+
+      user.token = token;
+      writeLog("User saved successfully!");
+
       return {
+        name: user.name,
+        token: token,
+        state: "User saved succesfully!",
+        code: 200,
+      };
+    } catch (err) {
+      console.log(err);
+      writeLog("SAVE USER -> Error saving user!");
+      return {
+        name: undefined,
         token: undefined,
-        state: "Something went wrong with the database connection!",
-        code: 500,
+        state: "SAVE USER -> Error saving user!",
+        code: 204,
       };
     }
+  },
 
-    !userExists
-      ? (res = await users
-          .create({
-            name,
-            wishes: [],
-            token: randomUUID()
-          })
-          .then((res: UserInterface) => {
-            return {
-              token: res.token,
-              state: "User saved succesfully!",
-              code: 200,
-            };
-          })
-          .catch(() => {
-            return {
-              token: undefined,
-              state: "SAVE USER -> Can't save user in database!",
-              code: 500,
-            };
-          }))
-      : (res = {
+  checkLogin: async (name: string, password: string) => {
+    try {
+      const user = await UserModel.findOne({ name });
+
+      if (user && (await bcrypt.compare(password, user.password))) {
+        const token = jwt.sign(
+          { user_id: user._id.valueOf(), name },
+          process.env.TOKEN_KEY,
+          {
+            expiresIn: "2h",
+          }
+        );
+        user.token = token;
+
+        writeLog("Login success!");
+        return {
+          name,
+          token: user.token,
+          state: "Login success!",
+          code: 200,
+        };
+      } else {
+        writeLog("LOGIN USER -> Invalid Credentials!");
+        return {
+          name: undefined,
           token: undefined,
-          state: "",
+          state: "LOGIN USER -> Invalid Credentials!",
           code: 204,
-        });
-    writeLog(res.state);
-    return res;
+        };
+      }
+    } catch (err) {
+      console.log(err);
+      writeLog("LOGIN USER -> Error when login user!");
+      return {
+        name: undefined,
+        token: undefined,
+        state: "LOGIN USER -> Error when login user!",
+        code: 204,
+      };
+    }
   },
 };

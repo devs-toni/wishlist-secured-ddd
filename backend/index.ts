@@ -9,7 +9,8 @@ import { writeLog } from "./lib/logger";
 require("dotenv").config();
 const helmet = require("helmet");
 const cors = require("cors");
-const router: Router = require("./router/router");
+const userRouter: Router = require("./routes/UserRouter");
+//const auth = require("./middlewares/auth");
 const { application } = CONFIG;
 
 mongoInit();
@@ -42,7 +43,7 @@ app.use((_request: Request, response: Response, next: () => void) => {
   response.header("Allow", "GET, POST, OPTIONS, PUT, DELETE, PATCH");
   next();
 });
-app.use("/", router);
+app.use("/users", userRouter );
 
 app.listen(application.PORT, () => {
   console.log("Server listening on port " + application.PORT);
