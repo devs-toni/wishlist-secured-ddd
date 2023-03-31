@@ -17,3 +17,9 @@ export interface UserInterface {
   token: string;
   password: string;
 }
+
+export interface TaskInterface {
+  id: string;
+  text: string;
+  isCompleted: boolean;
+}

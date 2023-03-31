@@ -1,0 +1,24 @@
+.user-container {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__name {
+    font-size: 1.9em;
+    margin-right: 20px;
+
+    span {
+      font-weight: bold;
+      color: violet;
+    }
+  }
+
+  &__logout {
+    font-size: 2.7em;
+    cursor: pointer;
+  }
+}

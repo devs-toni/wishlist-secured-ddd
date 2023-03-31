@@ -1,18 +1,19 @@
 import React, { useEffect } from 'react'
-import { TaskList, Form, Login, Cover } from '../index';
-import { useTasks } from '../../context/TaskContext';
+import { WishList, Form, Cover } from '../index';
+import { useWishes } from '../../context/WishContext';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 
 const Main = () => {
 
   const { type } = useParams();
   const navigate = useNavigate();
 
-  const { variables, singularFunctions, filters } = useTasks();
-  const { allTasks, trashTasks, filteredTasks, setFilteredTasks } = variables;
-  const { addTask, completeTask, deleteTask, updateTask, recoverTask } = singularFunctions;
-  const { setFilter, isFilter, setIsFilter } = filters;
+  const { wishState, singularFunctions, setFilteredWishes, setFilter, setIsFilter } = useWishes();
+  const { allWishes, trashWishes, filteredWishes, isFilter } = wishState;
+  const { addWish, completeWish, deleteWish, updateWish, recoverWish } = singularFunctions;
   const { authState, logout } = useAuth();
 
   useEffect(() => {
@@ -24,15 +25,15 @@ const Main = () => {
 
       switch (type) {
         case "active":
-          setFilteredTasks([...allTasks.filter(t => !t.isCompleted)]);
+          setFilteredWishes([...allWishes.filter(w => !w.isCompleted)]);
           break;
 
         case "completed":
-          setFilteredTasks([...allTasks.filter(t => t.isCompleted)])
+          setFilteredWishes([...allWishes.filter(w => w.isCompleted)])
           break;
 
         case "trash":
-          setFilteredTasks([...trashTasks])
+          setFilteredWishes([...trashWishes])
           break;
 
         default:
@@ -45,25 +46,29 @@ const Main = () => {
       setIsFilter(false);
       setFilter("all");
     }
-  }, [type, allTasks, trashTasks]);
+  }, [type, allWishes, trashWishes]);
 
   return (
     <>
-      <Cover />
-      <div className="wish-list">
-        <h1 className='wish-list__title'>TODO LIST</h1>
-        <Form onSubmit={addTask} />
-        <div className='wish-list__main'>
-          <TaskList
-            tasks={isFilter ? filteredTasks : allTasks}
-            completeTask={completeTask}
-            deleteTask={deleteTask}
-            updateTask={updateTask}
-            recoverTask={recoverTask}
-          />
+      <main className='main'>
+        <Cover />
+        <div className="wish-list">
+          <h1 className='wish-list__title'>TODO LIST</h1>
+          <Form onSubmit={addWish} />
+          <section className='wish-list__main'>
+            <WishList
+              wishes={isFilter ? filteredWishes : allWishes}
+              completeWish={completeWish}
+              deleteWish={deleteWish}
+              updateWish={updateWish}
+              recoverWish={recoverWish}
+            />
+          </section>
         </div>
-        <p>{authState.name}</p>
-        <p onClick={logout}>LOGOUT</p>
+      </main>
+      <div className='user-container'>
+        <p className='user-container__name'>Hi <span>{authState.name}</span> !</p>
+        <p className='user-container__logout' onClick={logout}><FontAwesomeIcon icon={faRightFromBracket} /></p>
       </div>
     </>
   )

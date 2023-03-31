@@ -1,8 +1,10 @@
 export { default as Cover } from './Cover';
 export { default as Page404 } from './Page404';
+export { default as PrivateRoute } from './PrivateRoute';
 export { default as Login } from './page/Login';
 export { default as Main } from './page/Main';
+export { default as Register } from './page/Register';
 export { default as Form } from './tasks/Form';
-export { default as TaskList } from './tasks/TaskList';
-export { default as ActionIcon } from './tasks/task/ActionIcon';
-export { default as Task } from './tasks/task/Task';
+export { default as WishList } from './tasks/WishList';
+export { default as ActionIcon } from './tasks/wish/ActionIcon';
+export { default as Wish } from './tasks/wish/Wish';

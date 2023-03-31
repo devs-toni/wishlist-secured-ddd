@@ -1,13 +1,13 @@
 import { AuthProvider } from './context/AuthContext';
-import { TaskProvider } from './context/TaskContext';
+import { WishProvider } from './context/WishContext';
 import Router from './router/Router';
 
 function App() {
   return (
     <AuthProvider>
-      <TaskProvider>
+      <WishProvider>
         <Router />
-      </TaskProvider>
+      </WishProvider>
     </AuthProvider>
   );
 }

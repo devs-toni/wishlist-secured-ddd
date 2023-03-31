@@ -11,6 +11,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleInput = ({ target }) => {
+    setError("");
     const { name, value } = target;
     setForm({ ...form, [name]: value });
   }
@@ -19,11 +20,11 @@ const Login = () => {
     e.preventDefault();
     await axios.post(`${BACKEND_URL}/users/login`, { form })
       .then(({ data, status }) => {
-        const { data: user } = data;
-        const { name, token } = user;
         if (status === 204) {
           setError("Username/Password are not valid!");
         } else {
+          const { data: user } = data;
+          const { name, token } = user;
           login(name, token);
           navigate('/list');
         }
@@ -32,34 +33,44 @@ const Login = () => {
 
   useEffect(() => {
     if (authState.isAuthenticated) navigate('/list');
-  }, [authState.isAuthenticated])
+  }, [authState.isAuthenticated, navigate])
 
 
   return (
-    <form onSubmit={handleSubmit} className="w-25 m-auto">
-      <div className="text-center">
-        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
-          style={{ width: '185px' }} alt="logo" />
-        <h4 className="mt-1 mb-5 pb-1">You are in my TODO List</h4>
+    <form onSubmit={handleSubmit} className="login">
+      <div className="login__img-container">
+        <img src="https://cdni.iconscout.com/illustration/premium/thumb/task-management-4517376-3742807.png"
+          alt="logo" className='login__img-container--img' />
       </div>
-      <p>Login</p>
-      <input
-        className='w-100 mb-2'
-        value={form.name}
-        onChange={handleInput}
-        name="name"
-        type='text'
-      />
-      <input
-        className='w-100 mb-2'
-        value={form.password}
-        name="password"
-        onChange={handleInput}
-        type='password'
-      />
-      <p className='text-danger'>{authState.error}</p>
-      <input type="submit" className='mb-4 w-100 bg-danger' value="Start" />
-      <NavLink to='/register'>Register</NavLink>
+      <div className='w-75 m-auto'>
+        <p className='login__title'>Login</p>
+        <label htmlFor="name">Username</label>
+        <input
+          className='w-100 mb-2'
+          value={form.name}
+          onChange={handleInput}
+          name="name"
+          id='name'
+          type='text'
+          required
+        />
+        <label htmlFor="password">Password</label>
+        <input
+          className='w-100 mb-2'
+          value={form.password}
+          name="password"
+          onChange={handleInput}
+          type='password'
+          id='password'
+          required
+        />
+        <p className='text-danger'>{authState.error}</p>
+        <input type="submit" className='submit-btn' value="Login" />
+        <div className='d-flex flex-row mt-5 '>
+          <p className='me-2'>Don't you already have an account?</p>
+          <NavLink to='/register'>Create an account!</NavLink>
+        </div>
+      </div>
     </form>
   );
 }

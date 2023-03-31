@@ -11,6 +11,7 @@ const Register = () => {
   const navigate = useNavigate();
 
   const handleInput = ({ target }) => {
+    setError("");
     const { name, value } = target;
     setForm({ ...form, [name]: value });
   }
@@ -19,40 +20,47 @@ const Register = () => {
     e.preventDefault();
     await axios.post(`${BACKEND_URL}/users/save`, { form })
       .then(({ data, status }) => {
-
-        if (status === 204) {
-          setError("Username already exists!");
-        } else {
-          navigate('/');
-        }
-      }
-      );
+        navigate('/');
+      }).catch((err) => {
+        setError("Username already exists!");
+      });
   }
 
   return (
-    <form onSubmit={handleSubmit} className="w-25 m-auto">
-      <div className="text-center">
-        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
-          style={{ width: '185px' }} alt="logo" />
-        <h4 className="mt-1 mb-5 pb-1">Register in TODO List</h4>
+    <form onSubmit={handleSubmit} className="login">
+      <div className="login__img-container">
+        <img src="https://cdni.iconscout.com/illustration/premium/thumb/task-management-4517376-3742807.png"
+          alt="logo" className='login__img-container--img' />
       </div>
-      <p>Register</p>
-      <input
-        className='w-100 mb-2'
-        value={form.name}
-        onChange={handleInput}
-        name="name"
-        type='text'
-      />
-      <input
-        className='w-100 mb-2'
-        value={form.password}
-        name="password"
-        onChange={handleInput}
-        type='password'
-      />
-      <input type="submit" className='mb-4 w-100 bg-danger' value="Send" />
-      <NavLink to='/'>Do you already have an account?</NavLink>
+      <div className='w-75 m-auto'>
+        <p className='login__title'>Register</p>
+        <label htmlFor="password">Username</label>
+        <input
+          className='w-100 mb-2'
+          value={form.name}
+          onChange={handleInput}
+          name="name"
+          id='name'
+          type='text'
+          required
+        />
+        <label htmlFor="password">Password</label>
+        <input
+          className='w-100 mb-2'
+          value={form.password}
+          name="password"
+          onChange={handleInput}
+          type='password'
+          id='password'
+          required
+        />
+        <p className='text-danger'>{authState.error}</p>
+        <input type="submit" className='submit-btn' value="Send" />
+        <div className='d-flex flex-row mt-5 '>
+          <p className='me-2' >Do you already have an account?</p>
+          <NavLink to='/'>Login!</NavLink>
+        </div>
+      </div>
     </form>
   );
 }

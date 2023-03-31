@@ -1,4 +1,6 @@
+import axios from "axios";
 import Swal from "sweetalert2";
+import { BACKEND_URL } from "./config";
 
 //FORM VALIDATIONS 
 
@@ -35,22 +37,6 @@ export const validateName = async (name) => {
   }
   return false;
 }
-
-
-
-// LOCAL STORAGE
-
-export const getLocalStorageItems = () => {
-  const items = JSON.parse(localStorage.getItem('TASKS'));
-  const trashItems = JSON.parse(localStorage.getItem('TRASH-TASKS'));
-  return { items, trashItems }
-}
-
-export const setLocalStorageItems = (name, tasks) => {
-  localStorage.setItem(name, JSON.stringify(tasks));
-}
-
-
 
 // NOTIFICATIONS 
 

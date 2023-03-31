@@ -322,3 +322,86 @@
 2023-03-31 11:26:47.407Z LOGGER: Login prueba succesfully!
 2023-03-31 11:29:06.115Z LOGGER: Login admin succesfully!
 2023-03-31 11:29:20.900Z LOGGER: Login devs succesfully!
+2023-03-31 13:05:22.374Z LOGGER: Login admin succesfully!
+2023-03-31 13:21:04.874Z LOGGER: Login admin succesfully!
+2023-03-31 14:13:11.130Z LOGGER: User pepe saved successfully!
+2023-03-31 14:13:40.899Z LOGGER: Login pepe succesfully!
+2023-03-31 14:13:58.238Z LOGGER: User pepe already exists
+2023-03-31 14:14:23.758Z LOGGER: User pepe already exists
+2023-03-31 14:15:16.969Z LOGGER: User pepe already exists
+2023-03-31 14:15:43.427Z LOGGER: User pepe already exists
+2023-03-31 14:16:13.357Z LOGGER: User pepe already exists
+2023-03-31 14:16:55.978Z LOGGER: User pepe already exists
+2023-03-31 14:17:06.360Z LOGGER: User admin already exists
+2023-03-31 14:17:44.877Z LOGGER: User pepe already exists
+2023-03-31 14:18:04.813Z LOGGER: User pepe already exists
+2023-03-31 14:18:29.657Z LOGGER: User pepe already exists
+2023-03-31 14:18:34.243Z LOGGER: User admin already exists
+2023-03-31 14:18:41.780Z LOGGER: User pepito saved successfully!
+2023-03-31 14:18:57.190Z LOGGER: LOGIN USER -> pepefdsffsda - Invalid Credentials!
+2023-03-31 14:19:17.644Z LOGGER: LOGIN USER -> pepefdsffsda - Invalid Credentials!
+2023-03-31 14:19:29.877Z LOGGER: LOGIN USER -> pepefdsffsda - Invalid Credentials!
+2023-03-31 14:20:11.319Z LOGGER: LOGIN USER -> pepeegvsfd - Invalid Credentials!
+2023-03-31 14:20:27.905Z LOGGER: LOGIN USER -> pepeaegr - Invalid Credentials!
+2023-03-31 14:20:35.482Z LOGGER: LOGIN USER -> pepefasd - Invalid Credentials!
+2023-03-31 14:20:41.846Z LOGGER: LOGIN USER -> pepe - Invalid Credentials!
+2023-03-31 14:20:45.791Z LOGGER: Login pepe succesfully!
+2023-03-31 14:21:13.060Z LOGGER: User pepito already exists
+2023-03-31 14:21:15.622Z LOGGER: User pepito already exists
+2023-03-31 14:21:24.255Z LOGGER: Login pepe succesfully!
+2023-03-31 14:23:18.266Z LOGGER: Login admin succesfully!
+2023-03-31 14:31:36.577Z LOGGER: LOGIN USER -> admin - Error when login user!
+2023-03-31 14:31:42.075Z LOGGER: LOGIN USER -> admin - Error when login user!
+2023-03-31 14:32:37.754Z LOGGER: LOGIN USER -> admin - Error when login user!
+2023-03-31 14:33:04.793Z LOGGER: LOGIN USER -> admin - Error when login user!
+2023-03-31 14:34:13.983Z LOGGER: LOGIN USER -> admin - Error when login user!
+2023-03-31 14:34:31.381Z LOGGER: LOGIN USER -> admin - Error when login user!
+2023-03-31 14:36:16.219Z LOGGER: LOGIN USER -> admin - Error when login user!
+2023-03-31 14:36:44.384Z LOGGER: LOGIN USER -> admin - Error when login user!
+2023-03-31 14:37:28.096Z LOGGER: LOGIN USER -> admin - Error when login user!
+2023-03-31 14:37:36.126Z LOGGER: LOGIN USER -> admin - Error when login user!
+2023-03-31 14:37:44.460Z LOGGER: LOGIN USER -> admin - Error when login user!
+2023-03-31 14:38:07.277Z LOGGER: LOGIN USER -> admin - Error when login user!
+2023-03-31 14:38:31.667Z LOGGER: LOGIN USER -> admin - Error when login user!
+2023-03-31 14:40:15.965Z LOGGER: Login admin succesfully!
+2023-03-31 14:40:33.232Z LOGGER: Login admin succesfully!
+2023-03-31 14:42:50.255Z LOGGER: Login admin succesfully!
+2023-03-31 14:45:22.686Z LOGGER: Login admin succesfully!
+2023-03-31 14:46:04.123Z LOGGER: Login admin succesfully!
+2023-03-31 15:47:10.277Z LOGGER: Login admin succesfully!
+2023-03-31 15:47:24.144Z LOGGER: Login admin succesfully!
+2023-03-31 15:48:08.587Z LOGGER: Login admin succesfully!
+2023-03-31 15:49:15.177Z LOGGER: Login admin succesfully!
+2023-03-31 15:53:44.364Z LOGGER: User admin already exists
+2023-03-31 15:53:56.024Z LOGGER: User adminn saved successfully!
+2023-03-31 15:54:04.360Z LOGGER: LOGIN USER -> adminn - Invalid Credentials!
+2023-03-31 15:54:11.132Z LOGGER: Login adminn succesfully!
+2023-03-31 15:54:17.427Z LOGGER: Login pepe succesfully!
+2023-03-31 16:00:14.497Z LOGGER: LOGIN USER -> admin - Invalid Credentials!
+2023-03-31 16:01:26.621Z LOGGER: User admin saved successfully!
+2023-03-31 16:01:28.616Z LOGGER: Login admin succesfully!
+2023-03-31 16:30:54.530Z LOGGER: Login admin succesfully!
+2023-03-31 16:41:18.171Z LOGGER: User pepe saved successfully!
+2023-03-31 16:41:23.396Z LOGGER: Login pepe succesfully!
+2023-03-31 16:44:03.786Z LOGGER: Login admin succesfully!
+2023-03-31 16:46:00.947Z LOGGER: LOGIN USER -> admin - Invalid Credentials!
+2023-03-31 16:46:03.577Z LOGGER: User admin saved successfully!
+2023-03-31 16:46:03.589Z LOGGER: User admin already exists
+2023-03-31 16:46:05.594Z LOGGER: Login admin succesfully!
+2023-03-31 16:46:27.635Z LOGGER: LOGIN USER -> pepe - Invalid Credentials!
+2023-03-31 16:46:33.395Z LOGGER: User pepe saved successfully!
+2023-03-31 16:46:37.302Z LOGGER: Login pepe succesfully!
+2023-03-31 16:47:12.601Z LOGGER: Login admin succesfully!
+2023-03-31 17:01:23.866Z LOGGER: Login pepe succesfully!
+2023-03-31 17:01:52.800Z LOGGER: Login admin succesfully!
+2023-03-31 17:01:57.620Z LOGGER: Login pepe succesfully!
+2023-03-31 17:02:40.938Z LOGGER: Login pepe succesfully!
+2023-03-31 17:04:30.803Z LOGGER: Login pepe succesfully!
+2023-03-31 17:04:37.171Z LOGGER: Login admin succesfully!
+2023-03-31 17:11:06.641Z LOGGER: Login admin succesfully!
+2023-03-31 18:04:55.790Z LOGGER: User admin saved successfully!
+2023-03-31 18:05:01.772Z LOGGER: User pepe saved successfully!
+2023-03-31 18:05:03.876Z LOGGER: Login admin succesfully!
+2023-03-31 18:08:28.620Z LOGGER: Login admin succesfully!
+2023-03-31 18:08:42.116Z LOGGER: Login pepe succesfully!
+2023-03-31 18:08:56.320Z LOGGER: Login admin succesfully!

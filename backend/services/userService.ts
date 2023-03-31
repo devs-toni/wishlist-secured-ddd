@@ -1,5 +1,5 @@
 import { writeLog } from "../lib/logger";
-import { UserDataResponse } from "../interfaces/UserInterfaces";
+import { TaskInterface, UserDataResponse } from "../interfaces/UserInterfaces";
 
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
@@ -26,7 +26,7 @@ export const UserService = {
 
       const token = jwt.sign(
         { user_id: user._id.valueOf(), name },
-        process.env.TOKEN_KEY,
+        `${process.env.TOKEN_KEY}`,
         {
           expiresIn: "1h",
         }
@@ -63,7 +63,7 @@ export const UserService = {
       if (user && (await bcrypt.compare(password, user.password))) {
         const token = jwt.sign(
           { user_id: user._id.valueOf(), name },
-          process.env.TOKEN_KEY,
+          `${process.env.TOKEN_KEY}`,
           {
             expiresIn: "1h",
           }
@@ -108,6 +108,36 @@ export const UserService = {
     } catch (err) {
       return {
         message: "User not found",
+        code: 204,
+      };
+    }
+  },
+
+  updateWishes: async (tasks: TaskInterface[], id: string) => {
+    const data = await UserModel.updateOne(
+      { _id: id },
+      { $set: { wishes: tasks } }
+    );
+    console.log(data);
+
+    return {
+      message: "Proof",
+      code: 204,
+    };
+  },
+
+  getAllWishes: async (id: string) => {
+    try {
+      const data = await UserModel.find({ _id: id }, { wishes: 1 });
+      return {
+        data,
+        message: "Data obtained successfully",
+        code: 200,
+      };
+    } catch (err) {
+      console.error(err);
+      return {
+        message: "Data obtained successfully",
         code: 204,
       };
     }

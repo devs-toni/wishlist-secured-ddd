@@ -2,6 +2,8 @@
 @use "./components/cover";
 @use "./components/page404";
 @use "./abstracts/variables";
+@use "./components/main";
+@use "./components/login";
 @import "~bootstrap/scss/bootstrap";
 
 * {

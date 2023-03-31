@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }) => {
           });
       }
     }
-    verifyToken();
+    if (token) verifyToken();
   }, [])
 
   /*
