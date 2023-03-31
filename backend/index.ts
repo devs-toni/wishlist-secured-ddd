@@ -1,27 +1,29 @@
 import express, { Express, Router, Request, Response } from "express";
 import CONFIG from "./config/config";
-import { mongoConnection as mongoInit } from "./config/mongoConnection";
 import morgan from "morgan";
 import { ENV } from "./config/config";
 import { loggerStream } from "./lib/winstonLogger";
-import { writeLog } from "./lib/logger";
+
+// REQUIREMENTS
 
 require("dotenv").config();
 const helmet = require("helmet");
+const connect = require("./config/database");
 const cors = require("cors");
 const userRouter: Router = require("./routes/UserRouter");
-//const auth = require("./middlewares/auth");
 const { application } = CONFIG;
 
-mongoInit();
+// SERVER CONFIGURATION
 
 const app: Express = express();
+
 app.use(
   cors({
     origin: "http://localhost:3000",
     methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
   })
 );
+
 app.use(express.json());
 app.use(helmet());
 app.use(
@@ -30,6 +32,7 @@ app.use(
     { stream: loggerStream, skip: () => !ENV }
   )
 );
+
 app.use((_request: Request, response: Response, next: () => void) => {
   response.header("Access-Control-Allow-Origin", "*");
   response.header(
@@ -43,9 +46,13 @@ app.use((_request: Request, response: Response, next: () => void) => {
   response.header("Allow", "GET, POST, OPTIONS, PUT, DELETE, PATCH");
   next();
 });
-app.use("/users", userRouter );
 
-app.listen(application.PORT, () => {
-  console.log("Server listening on port " + application.PORT);
-  writeLog("Server listening on port " + application.PORT);
+app.use("/users", userRouter);
+
+// SERVER CONNECTION
+
+connect().then(function initServer() {
+  app.listen(application.PORT, () => {
+    console.log("Server listening on port " + application.PORT);
+  });
 });

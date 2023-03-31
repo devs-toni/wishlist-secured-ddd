@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { TaskList, Form, Login, Cover } from '../index';
 import { useTasks } from '../../context/TaskContext';
 import { useParams, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 
 const Main = () => {
 
@@ -12,6 +13,7 @@ const Main = () => {
   const { allTasks, trashTasks, filteredTasks, setFilteredTasks } = variables;
   const { addTask, completeTask, deleteTask, updateTask, recoverTask } = singularFunctions;
   const { setFilter, isFilter, setIsFilter } = filters;
+  const { authState, logout } = useAuth();
 
   useEffect(() => {
 
@@ -60,6 +62,8 @@ const Main = () => {
             recoverTask={recoverTask}
           />
         </div>
+        <p>{authState.name}</p>
+        <p onClick={logout}>LOGOUT</p>
       </div>
     </>
   )

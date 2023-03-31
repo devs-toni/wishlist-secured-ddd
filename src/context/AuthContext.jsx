@@ -1,13 +1,9 @@
-import { createContext, useCallback, useContext, useMemo, useReducer } from 'react'
+import { createContext, useCallback, useContext, useLayoutEffect, useMemo, useReducer } from 'react'
 import { REDUCER_TYPES } from './types';
 import { BACKEND_URL } from '../helpers/config';
 import axios from 'axios';
 
 const token = JSON.parse(localStorage.getItem('user')) || undefined;
-
-token &&
-  axios.post(`${BACKEND_URL}/users/verify`, token)
-    .then((res) => console.log(res));
 
 const AuthContext = createContext();
 export const useAuth = () => {
@@ -15,6 +11,24 @@ export const useAuth = () => {
 }
 
 export const AuthProvider = ({ children }) => {
+
+  useLayoutEffect(() => {
+    const verifyToken = async () => {
+      if (token) {
+        await axios.post(`${BACKEND_URL}/users/verify`, { token })
+          .then(({ data, status }) => {
+            const { data: user } = data;
+            const { name, token } = user;
+            if (status === 200) {
+              login(name, token);
+            }
+          }).catch(() => {
+            logout();
+          });
+      }
+    }
+    verifyToken();
+  }, [])
 
   /*
   ! REDUCER
@@ -45,7 +59,12 @@ export const AuthProvider = ({ children }) => {
         };
 
       case REDUCER_TYPES.LOGOUT:
-        return initialState;
+        return {
+          isAuthenticated: false,
+          name: "",
+          token: "",
+          error: ""
+        }
 
       default:
         return state;
@@ -66,13 +85,17 @@ export const AuthProvider = ({ children }) => {
     dispatch({ type: REDUCER_TYPES.LOGIN_ERROR, payload: msg })
   }, []);
 
-
+  const logout = useCallback(() => {
+    localStorage.removeItem("user");
+    dispatch({ type: REDUCER_TYPES.LOGOUT });
+  }, [])
 
   const data = useMemo(() => ({
     authState,
     login,
-    setError
-  }), [authState, login, setError])
+    setError,
+    logout
+  }), [authState, login, setError, logout])
 
   return (
     <AuthContext.Provider value={data}>{children}</AuthContext.Provider>

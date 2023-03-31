@@ -1,6 +1,5 @@
-export interface TokenInterface {
-  name: string | undefined;
-  token: string | undefined;
-  state: string;
-  code: number;
+import { Express, Request } from "express";
+
+export interface RequestBody<T> extends Express.Request {
+  body: T;
 }

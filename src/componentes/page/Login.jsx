@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { BACKEND_URL } from '../../helpers/config';
@@ -19,16 +19,21 @@ const Login = () => {
     e.preventDefault();
     await axios.post(`${BACKEND_URL}/users/login`, { form })
       .then(({ data, status }) => {
-
+        const { data: user } = data;
+        const { name, token } = user;
         if (status === 204) {
           setError("Username/Password are not valid!");
         } else {
-          login(form.name, data.token);
+          login(name, token);
           navigate('/list');
         }
-      }
-      );
+      });
   }
+
+  useEffect(() => {
+    if (authState.isAuthenticated) navigate('/list');
+  }, [authState.isAuthenticated])
+
 
   return (
     <form onSubmit={handleSubmit} className="w-25 m-auto">

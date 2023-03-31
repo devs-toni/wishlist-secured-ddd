@@ -1,22 +1,20 @@
 import { writeLog } from "../lib/logger";
+import { UserDataResponse } from "../interfaces/UserInterfaces";
+
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const UserModel = require("../models/User");
 require("dotenv").config();
 
 export const UserService = {
-  save: async (name: string, password: string) => {
+  save: async (name: string, password: string): Promise<UserDataResponse> => {
     try {
       const userExists: boolean | undefined = await UserModel.findOne({ name });
 
       if (userExists) {
-        writeLog(`User ${name} already exists`);
-        return {
-          name: undefined,
-          token: undefined,
-          state: "User already exist. Please login!",
-          code: 209,
-        };
+        const msg = `User ${name} already exists`;
+        writeLog(msg);
+        return { message: msg, code: 409 };
       }
 
       const encryptedPassword: string = await bcrypt.hash(password, 10);
@@ -30,32 +28,35 @@ export const UserService = {
         { user_id: user._id.valueOf(), name },
         process.env.TOKEN_KEY,
         {
-          expiresIn: "2h",
+          expiresIn: "1h",
         }
       );
 
       user.token = token;
-      writeLog("User saved successfully!");
+      const msg = `User ${name} saved successfully!`;
+      writeLog(msg);
 
       return {
-        name: user.name,
-        token: token,
-        state: "User saved succesfully!",
+        data: user.name,
+        message: msg,
         code: 200,
       };
     } catch (err) {
-      console.log(err);
-      writeLog("SAVE USER -> Error saving user!");
+      console.error(err);
+      const message = "Error saving user in database!";
+      writeLog("SAVE USER -> " + message);
+
       return {
-        name: undefined,
-        token: undefined,
-        state: "SAVE USER -> Error saving user!",
+        message,
         code: 204,
       };
     }
   },
 
-  checkLogin: async (name: string, password: string) => {
+  checkLogin: async (
+    name: string,
+    password: string
+  ): Promise<UserDataResponse> => {
     try {
       const user = await UserModel.findOne({ name });
 
@@ -64,34 +65,49 @@ export const UserService = {
           { user_id: user._id.valueOf(), name },
           process.env.TOKEN_KEY,
           {
-            expiresIn: "2h",
+            expiresIn: "1h",
           }
         );
         user.token = token;
-
-        writeLog("Login success!");
+        const msg = `Login ${name} succesfully!`;
+        writeLog(msg);
         return {
-          name,
-          token: user.token,
-          state: "Login success!",
+          data: user,
+          message: msg,
           code: 200,
         };
       } else {
-        writeLog("LOGIN USER -> Invalid Credentials!");
+        const msg = `${name} - Invalid Credentials!`;
+        writeLog("LOGIN USER -> " + msg);
         return {
-          name: undefined,
-          token: undefined,
-          state: "LOGIN USER -> Invalid Credentials!",
+          message: msg,
           code: 204,
         };
       }
     } catch (err) {
-      console.log(err);
-      writeLog("LOGIN USER -> Error when login user!");
+      console.error(err);
+      const msg = `${name} - Error when login user!`;
+      writeLog("LOGIN USER -> " + msg);
       return {
-        name: undefined,
-        token: undefined,
-        state: "LOGIN USER -> Error when login user!",
+        message: msg,
+        code: 204,
+      };
+    }
+  },
+
+  findById: async (_id: string, token: string) => {
+    try {
+      const user = await UserModel.findOne({ _id });
+      user.token = token;
+
+      return {
+        data: user,
+        message: "User found",
+        code: 200,
+      };
+    } catch (err) {
+      return {
+        message: "User not found",
         code: 204,
       };
     }
