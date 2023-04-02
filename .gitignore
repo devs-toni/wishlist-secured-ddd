@@ -1,3 +1,5 @@
 node_modules/
 package-lock.json
 backend/.env
+backend/config/credentials.pem
+backend/config/X509-cert-51376857154002692.pem

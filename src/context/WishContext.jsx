@@ -75,31 +75,43 @@ export const WishProvider = ({ children }) => {
     dispatch({ type: REDUCER_TYPES.SET_FILTERED_WISHES, payload: wishes })
   }, []);
   const setFilter = useCallback((value) => {
-    dispatch({ type: REDUCER_TYPES.SET_FILTERED_WISHES, payload: value })
+    dispatch({ type: REDUCER_TYPES.SET_FILTER, payload: value })
   }, []);
   const setIsFilter = useCallback((value) => {
-    dispatch({ type: REDUCER_TYPES.SET_FILTERED_WISHES, payload: value })
+    dispatch({ type: REDUCER_TYPES.SET_IS_FILTER, payload: value })
   }, []);
 
   useLayoutEffect(() => {
     const getUserWishes = async () => {
-      axios.post(`${BACKEND_URL}/users/all_wishes`, { token: authState.token })
+      axios.post(`${BACKEND_URL}/wishes/get/all`, { token: authState.token })
         .then(({ data, status }) => {
+        
           if (status === 200) {
             const { data: user } = data;
-            const { wishes } = user[0];
+            const { wishes, trash } = user[0];
             dispatch({ type: REDUCER_TYPES.SET_ALL_WISHES, payload: wishes });
+            dispatch({ type: REDUCER_TYPES.SET_TRASH_WISHES, payload: trash });
           }
         });
     }
-    if (authState.token) getUserWishes();
+
+    if (authState.token) {
+      getUserWishes();
+    }
   }, [authState.token])
 
-  const refreshDB = useCallback(async (wishes) => {
-    axios.patch(`${BACKEND_URL}/users/update_wishes`, { token: authState.token, wishes })
-      .then((res) => {
-        console.log(res);
-      });
+  const refreshDB = useCallback(async (wishes, trash) => {
+    wishes &&
+      axios.patch(`${BACKEND_URL}/users/update_wishes`, { token: authState.token, wishes })
+        .then((res) => {
+          console.log(res);
+        });
+
+    trash &&
+      axios.patch(`${BACKEND_URL}/users/update_trash`, { token: authState.token, trash })
+        .then((res) => {
+          console.log(res);
+        })
   }, [authState.token]);
 
   // SINGULAR FUNCTIONS
@@ -116,13 +128,13 @@ export const WishProvider = ({ children }) => {
   }, [navigate, refreshDB, wishState.allWishes]);
 
   const deleteWish = useCallback((id) => {
-    const deletedWish = authState.allWishes.filter(wish => wish.id === id)[0];
+    const deletedWish = wishState.allWishes.filter(wish => wish.id === id)[0];
     const updatedWishes = wishState.allWishes.filter(wish => wish.id !== id);
     dispatch({ type: REDUCER_TYPES.SET_ALL_WISHES, payload: updatedWishes })
     dispatch({ type: REDUCER_TYPES.SET_TRASH_WISHES, payload: [...wishState.trashWishes, deletedWish] })
-    refreshDB(updatedWishes);
+    refreshDB(updatedWishes, [...wishState.trashWishes, deletedWish]);
     utils.launchSuccessNotification("Task was successfully removed!");
-  }, [authState.allWishes, refreshDB, wishState.allWishes, wishState.trashWishes]);
+  }, [refreshDB, wishState.allWishes, wishState.trashWishes]);
 
   const completeWish = useCallback((id) => {
     const updatedWishes = wishState.allWishes.map(wish => {
@@ -156,7 +168,7 @@ export const WishProvider = ({ children }) => {
 
     dispatch({ type: REDUCER_TYPES.SET_ALL_WISHES, payload: updatedWishes })
     dispatch({ type: REDUCER_TYPES.SET_TRASH_WISHES, payload: trashWishesUpdated })
-    refreshDB(updatedWishes);
+    refreshDB(updatedWishes, trashWishesUpdated);
     utils.launchSuccessNotification("Task was successfully recovered!");
 
     if (wishState.trashWishes.length === 1) navigate("/");
@@ -175,7 +187,7 @@ export const WishProvider = ({ children }) => {
 
     dispatch({ type: REDUCER_TYPES.SET_ALL_WISHES, payload: notCompletedWishes })
     dispatch({ type: REDUCER_TYPES.SET_TRASH_WISHES, payload: [...wishState.trashWishes, ...completedWishes] })
-    refreshDB(notCompletedWishes);
+    refreshDB(notCompletedWishes, [...wishState.trashWishes, ...completedWishes]);
     utils.launchSuccessNotification("Completed tasks were successfully deleted!");
     navigate("/");
   }, [navigate, refreshDB, wishState.allWishes, wishState.trashWishes])
@@ -189,7 +201,7 @@ export const WishProvider = ({ children }) => {
     }
     dispatch({ type: REDUCER_TYPES.SET_ALL_WISHES, payload: [...wishState.allWishes, ...wishState.trashWishes] })
     dispatch({ type: REDUCER_TYPES.SET_TRASH_WISHES, payload: [] })
-    refreshDB([...wishState.allWishes, ...wishState.trashWishes]);
+    refreshDB([...wishState.allWishes, ...wishState.trashWishes], []);
     utils.launchSuccessNotification("All tasks were successfully recovered!");
     navigate("/");
   }, [navigate, refreshDB, wishState.allWishes, wishState.trashWishes])
@@ -204,11 +216,11 @@ export const WishProvider = ({ children }) => {
     const accepted = await utils.askConfirmDelete();
     if (accepted) {
       utils.launchSuccessNotification("Wish list was successfully emptied!");
-      //setTrashTasks([...trashTasks, ...allTasks]);
       dispatch({ type: REDUCER_TYPES.SET_ALL_WISHES, payload: [] })
-      refreshDB([]);
+      dispatch({ type: REDUCER_TYPES.SET_TRASH_WISHES, payload: wishState.allWishes });
+      refreshDB([], wishState.allWishes);
     }
-  }, [refreshDB, wishState.allWishes.length])
+  }, [refreshDB, wishState.allWishes])
 
 
 
@@ -220,9 +232,10 @@ export const WishProvider = ({ children }) => {
     const accepted = await utils.askConfirmDelete();
     if (accepted) {
       dispatch({ type: REDUCER_TYPES.SET_TRASH_WISHES, payload: [] })
+      refreshDB(null, [])
       utils.launchSuccessNotification("Trash was successfully emptied!");
     }
-  }, [wishState.trashWishes])
+  }, [refreshDB, wishState.trashWishes.length])
 
   // OTHER
 

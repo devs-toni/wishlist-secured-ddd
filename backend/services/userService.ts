@@ -1,5 +1,5 @@
 import { writeLog } from "../lib/logger";
-import { TaskInterface, UserDataResponse } from "../interfaces/UserInterfaces";
+import { UserDataResponse } from "../interfaces/UserInterfaces";
 
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
@@ -111,35 +111,5 @@ export const UserService = {
         code: 204,
       };
     }
-  },
-
-  updateWishes: async (tasks: TaskInterface[], id: string) => {
-    const data = await UserModel.updateOne(
-      { _id: id },
-      { $set: { wishes: tasks } }
-    );
-    console.log(data);
-
-    return {
-      message: "Proof",
-      code: 204,
-    };
-  },
-
-  getAllWishes: async (id: string) => {
-    try {
-      const data = await UserModel.find({ _id: id }, { wishes: 1 });
-      return {
-        data,
-        message: "Data obtained successfully",
-        code: 200,
-      };
-    } catch (err) {
-      console.error(err);
-      return {
-        message: "Data obtained successfully",
-        code: 204,
-      };
-    }
-  },
+  }
 };

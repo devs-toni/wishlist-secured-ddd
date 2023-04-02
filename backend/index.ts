@@ -11,6 +11,7 @@ const helmet = require("helmet");
 const connect = require("./config/database");
 const cors = require("cors");
 const userRouter: Router = require("./routes/UserRouter");
+const wishRouter: Router = require("./routes/WishRouter");
 const { application } = CONFIG;
 
 // SERVER CONFIGURATION
@@ -48,10 +49,11 @@ app.use((_request: Request, response: Response, next: () => void) => {
 });
 
 app.use("/users", userRouter);
+app.use("/wishes", wishRouter);
 
 // SERVER CONNECTION
 
-connect().then(function initServer() {
+connect().then(() => {
   app.listen(application.PORT, () => {
     console.log("Server listening on port " + application.PORT);
   });

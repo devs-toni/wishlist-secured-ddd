@@ -18,8 +18,4 @@ export interface UserInterface {
   password: string;
 }
 
-export interface TaskInterface {
-  id: string;
-  text: string;
-  isCompleted: boolean;
-}
+

@@ -2,7 +2,6 @@ import { Response, Request } from "express";
 import {
   UserDataResponse,
   FormLogin,
-  TaskInterface,
 } from "../interfaces/UserInterfaces";
 import { RequestBody } from "../interfaces/httpInterfaces";
 import { UserService } from "../services/UserService";
@@ -58,51 +57,7 @@ const UserController = {
       token
     );
     return response.status(dataCollected.code).send(dataCollected);
-  },
-
-  refreshWishes: async (
-    request: RequestBody<{ token: string; wishes: TaskInterface[] }>,
-    response: Response<UserDataResponse>
-  ) => {
-    const allWishes = request.body.wishes;
-    const token = request.body.token;
-    let decoded = { user_id: "" };
-    try {
-      decoded = jwt.verify(token, `${process.env.TOKEN_KEY}`);
-    } catch (err) {
-      return response
-        .status(401)
-        .send({ message: "Unauthorized access!", code: 401 });
-    }
-
-    const userId = decoded.user_id;
-    const dataCollected: UserDataResponse = await UserService.updateWishes(
-      allWishes,
-      userId
-    );
-    return response.status(dataCollected.code).send(dataCollected);
-  },
-
-  getAllWishes: async (
-    request: RequestBody<{ token: string }>,
-    response: Response<UserDataResponse>
-  ) => {
-    const token = request.body.token;
-    let decoded = { user_id: "" };
-    try {
-      decoded = jwt.verify(token, `${process.env.TOKEN_KEY}`);
-    } catch (err) {
-      return response
-        .status(401)
-        .send({ message: "Unauthorized access!", code: 401 });
-    }
-
-    const userId = decoded.user_id;
-    const dataCollected: UserDataResponse = await UserService.getAllWishes(
-      userId
-    );
-    return response.status(dataCollected.code).send(dataCollected);
-  },
+  }
 };
 
 module.exports = UserController;

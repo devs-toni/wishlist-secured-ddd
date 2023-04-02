@@ -17,6 +17,7 @@ export default function Form({ onSubmit }) {
       setInputTask('');
       onSubmit({
         id: uuidv4(),
+        creation: new Date().toISOString(),
         text: inputTask,
         isCompleted: false
       });

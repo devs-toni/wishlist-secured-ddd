@@ -405,3 +405,29 @@
 2023-03-31 18:08:28.620Z LOGGER: Login admin succesfully!
 2023-03-31 18:08:42.116Z LOGGER: Login pepe succesfully!
 2023-03-31 18:08:56.320Z LOGGER: Login admin succesfully!
+2023-04-02 10:40:17.041Z LOGGER: Login admin succesfully!
+2023-04-02 10:40:26.930Z LOGGER: Login pepe succesfully!
+2023-04-02 10:40:43.364Z LOGGER: Login admin succesfully!
+2023-04-02 10:40:49.667Z LOGGER: Login pepe succesfully!
+2023-04-02 10:45:06.124Z LOGGER: Login admin succesfully!
+2023-04-02 10:57:37.397Z LOGGER: LOGIN USER -> admin - Invalid Credentials!
+2023-04-02 10:57:41.520Z LOGGER: User admin saved successfully!
+2023-04-02 10:57:43.800Z LOGGER: Login admin succesfully!
+2023-04-02 10:59:23.063Z LOGGER: User pepe saved successfully!
+2023-04-02 10:59:27.310Z LOGGER: Login pepe succesfully!
+2023-04-02 10:59:55.101Z LOGGER: Login admin succesfully!
+2023-04-02 16:40:10.541Z LOGGER: Login admin succesfully!
+2023-04-02 16:41:13.881Z LOGGER: Login pepe succesfully!
+2023-04-02 16:41:21.177Z LOGGER: Login admin succesfully!
+2023-04-02 16:46:59.562Z LOGGER: Login pepe succesfully!
+2023-04-02 17:05:28.203Z LOGGER: User pepe saved successfully!
+2023-04-02 17:05:29.991Z LOGGER: Login pepe succesfully!
+2023-04-02 17:19:53.310Z LOGGER: User pepe saved successfully!
+2023-04-02 17:19:56.761Z LOGGER: User pepe already exists
+2023-04-02 17:20:07.905Z LOGGER: Login pepe succesfully!
+2023-04-02 18:19:20.679Z LOGGER: SAVE USER -> Error saving user in database!
+2023-04-02 18:20:24.172Z LOGGER: SAVE USER -> Error saving user in database!
+2023-04-02 18:21:42.299Z LOGGER: SAVE USER -> Error saving user in database!
+2023-04-02 18:34:58.622Z LOGGER: User pepe saved successfully!
+2023-04-02 18:35:55.904Z LOGGER: User pepe saved successfully!
+2023-04-02 18:35:57.631Z LOGGER: Login pepe succesfully!

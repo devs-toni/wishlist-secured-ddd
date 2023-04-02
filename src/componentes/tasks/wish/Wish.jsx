@@ -36,8 +36,8 @@ Wish.propTypes = {
   id: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   isCompleted: PropTypes.bool.isRequired,
-  completeTask: PropTypes.func.isRequired,
-  deleteTask: PropTypes.func.isRequired,
-  updateTask: PropTypes.func.isRequired,
-  recoverTask: PropTypes.func.isRequired
+  completeWish: PropTypes.func.isRequired,
+  deleteWish: PropTypes.func.isRequired,
+  updateWish: PropTypes.func.isRequired,
+  recoverWish: PropTypes.func.isRequired
 }

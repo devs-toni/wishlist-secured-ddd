@@ -6,14 +6,14 @@ import PropTypes from 'prop-types';
 
 export default function WishList({ wishes, completeWish, deleteWish, updateWish, recoverWish }) {
 
-  const { pluralFunctions, wishState, filter } = useWishes();
+  const { pluralFunctions, wishState } = useWishes();
   const { getTotalLeftWishes, deleteAllWishes, deleteCompletedWishes, deleteTrash, recoverAllWishes } = pluralFunctions;
 
-  const inTrash = (filter === "trash") ? true : false;
+  const inTrash = (wishState.filter === "trash") ? true : false;
   const leftItems = getTotalLeftWishes();
 
-  const isActive = (state) => (filter === state) ? "show" : "";
-  const hasItems = (wishState.allWishes.length > 0) ? "not-empty" : "";
+  const isActive = (state) => (wishState.filter === state) ? "show" : "";
+  const hasItems = (wishState.trashWishes.length > 0) ? "not-empty" : "";
 
   return (
     <>
@@ -52,10 +52,10 @@ export default function WishList({ wishes, completeWish, deleteWish, updateWish,
               id={wish.id}
               text={wish.text}
               isCompleted={wish.isCompleted}
-              completeTask={completeWish}
-              deleteTask={deleteWish}
-              updateTask={updateWish}
-              recoverTask={recoverWish}
+              completeWish={completeWish}
+              deleteWish={deleteWish}
+              updateWish={updateWish}
+              recoverWish={recoverWish}
             />
           )
         }
