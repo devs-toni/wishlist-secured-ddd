@@ -3,7 +3,7 @@ import { useWishes } from "../../../context/WishContext";
 import { PropTypes } from 'prop-types';
 import { ActionIcon } from "../../index";
 
-export default function Wish({ id, text, isCompleted, completeWish, deleteWish, updateWish, recoverWish }) {
+export default function Wish({ _id, text, isCompleted, completeWish, deleteWish, updateWish, recoverWish }) {
 
   const { wishState } = useWishes();
   const iconClas = "task-container__icons-container--task-icon";
@@ -12,18 +12,18 @@ export default function Wish({ id, text, isCompleted, completeWish, deleteWish, 
   const isTrashStyle = (property) => inTrash ? `no-${property}` : "";
   const isCompletedStyle = isCompleted ? "completed" : "";
   
-  const updateIcon = <ActionIcon icon={faPencil} clas={`${iconClas} ${!inTrash && !isCompleted ? '' : 'no-visible'}`} func={updateWish} id={id} />
+  const updateIcon = <ActionIcon icon={faPencil} clas={`${iconClas} ${!inTrash && !isCompleted ? '' : 'no-visible'}`} func={updateWish} id={_id} />
   const stateIcon = isCompleted ?  <ActionIcon icon={faCheck} clas="mark__completed" /> : <></>;
   const mainIcons = !inTrash
     ?
-    <ActionIcon icon={faClose} clas={iconClas} func={deleteWish} id={id} />
+    <ActionIcon icon={faClose} clas={iconClas} func={deleteWish} id={_id} />
     :
-    <ActionIcon icon={faSave} clas={iconClas} func={recoverWish} id={id} />
+    <ActionIcon icon={faSave} clas={iconClas} func={recoverWish} id={_id} />
 
 
   return (
     <div className={`task-container ${isTrashStyle("hover")}`}>
-      <div className={`task-container__task-text ${isTrashStyle("cursor")}`} onClick={() => !inTrash ? completeWish(id) : {}}>
+      <div className={`task-container__task-text ${isTrashStyle("cursor")}`} onClick={() => !inTrash ? completeWish(_id) : {}}>
         <div className={`mark ${isCompletedStyle}`}>{stateIcon}</div>
         <p className={isCompletedStyle}>{text}</p>
       </div>
@@ -33,7 +33,7 @@ export default function Wish({ id, text, isCompleted, completeWish, deleteWish, 
 }
 
 Wish.propTypes = {
-  id: PropTypes.string.isRequired,
+  _id: PropTypes.string,
   text: PropTypes.string.isRequired,
   isCompleted: PropTypes.bool.isRequired,
   completeWish: PropTypes.func.isRequired,

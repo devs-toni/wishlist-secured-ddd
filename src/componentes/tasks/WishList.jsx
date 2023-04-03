@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useWishes } from '../../context/WishContext';
 import { Wish } from '../index';
 import PropTypes from 'prop-types';
+import uuid from 'react-uuid';
 
 export default function WishList({ wishes, completeWish, deleteWish, updateWish, recoverWish }) {
 
@@ -48,8 +49,8 @@ export default function WishList({ wishes, completeWish, deleteWish, updateWish,
         {
           wishes.map((wish) =>
             <Wish
-              key={wish.id}
-              id={wish.id}
+              key={uuid()}
+              _id={wish._id}
               text={wish.text}
               isCompleted={wish.isCompleted}
               completeWish={completeWish}

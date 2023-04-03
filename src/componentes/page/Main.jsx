@@ -22,8 +22,6 @@ const Main = () => {
 
       setIsFilter(true);
       setFilter(type);
-      console.log(type);
-      console.log(isFilter)
       switch (type) {
         case "active":
           setFilteredWishes([...allWishes.filter(w => !w.isCompleted)]);
