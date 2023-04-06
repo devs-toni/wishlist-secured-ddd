@@ -4,7 +4,7 @@ import { WishRepositoryAdapter } from '../../infrastructure/adapters/WishReposit
 export class WishDeleteUseCase implements DeleteWish {
   constructor(private readonly wishRepositoryAdapter: WishRepositoryAdapter) {}
 
-  deleteById(id: string): Promise<boolean> {
+  deleteById(id: string) {
     return this.wishRepositoryAdapter.deleteById(id);
   }
 }

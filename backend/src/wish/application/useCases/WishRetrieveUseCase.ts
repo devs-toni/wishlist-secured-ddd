@@ -7,7 +7,7 @@ export class WishRetrieveUseCase implements RetrieveAllWishes {
 
   constructor(private readonly wishRepositoryAdapter: WishRepositoryAdapter) {}
 
-  findAll(userId: string): Promise<Wish[] | undefined> {
+  findAll(userId: string) {
     return this.wishRepositoryAdapter.findAll(userId);
   }
 }

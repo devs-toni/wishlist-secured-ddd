@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { userController } from "../../../config/infrastructure";
+import { UserController } from "../controller/UserController";
 
 export const userRouter: Router = Router();
 
-userRouter.post("/save", (req, res) => userController.register);
-userRouter.post("/login", (req, res) => userController.login);
-userRouter.post("/verify", (req, res) => userController.verify);
+userRouter.post("/save", UserController.register);
+userRouter.post("/login", UserController.login);
+userRouter.post("/verify", UserController.verify);

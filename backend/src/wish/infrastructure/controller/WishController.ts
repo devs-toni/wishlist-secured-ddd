@@ -1,20 +1,127 @@
 import { Response, Request } from "express";
-import { WishControllerPort } from "../../domain/ports/output/WishControllerPort";
-import {
-  RequestBody,
-  ResponseBody,
-} from "../../../config/domain/entities/HttpI";
+import { RequestBody } from "../../../config/domain/entities/HttpI";
 import { Wish } from "../../domain/entities/Wish";
 import { UserAuthenticator } from "../../../user/application/UserAuthenticator";
-import { WishService } from "../../application/WishService";
+import {
+  WishDeleteAllCompletedUseCase,
+  WishDeleteAllUseCase,
+  WishDeleteFromTrashUseCase,
+  WishDeleteUseCase,
+  WishRecoverUseCase,
+  WishRetrieveUseCase,
+  WishService,
+  WishToggleCompleteUseCase,
+  WishUpdateUseCase,
+  WishSearchUseCase,
+  WishRecoverAllUseCase,
+  WishCreateUseCase,
+} from "../../../wish/application";
+import { WishRepositoryAdapter } from "../../../wish/infrastructure/adapters/WishRepositoryAdapter";
+import { MongoWishRepository } from "../repository/MongoWishRepository";
 
 require("dotenv").config();
+const userAuthenticator: UserAuthenticator = new UserAuthenticator();
 
-export class WishController implements WishControllerPort {
-  constructor(
-    private readonly wishService: WishService,
-    private readonly userAuthenticator: UserAuthenticator
-  ) {}
+const mongoWishRepository: MongoWishRepository = new MongoWishRepository();
+const wishRepositoryAdapter: WishRepositoryAdapter = new WishRepositoryAdapter(
+  mongoWishRepository
+);
+const wishCreateUseCase: WishCreateUseCase = new WishCreateUseCase(
+  wishRepositoryAdapter
+);
+const wishDeleteUseCase: WishDeleteUseCase = new WishDeleteUseCase(
+  wishRepositoryAdapter
+);
+const wishDeleteAllUseCase: WishDeleteAllUseCase = new WishDeleteAllUseCase(
+  wishRepositoryAdapter
+);
+const wishDeleteFromTrashUseCase: WishDeleteFromTrashUseCase =
+  new WishDeleteFromTrashUseCase(wishRepositoryAdapter);
+const wishDeleteAllCompletedUseCase: WishDeleteAllCompletedUseCase =
+  new WishDeleteAllCompletedUseCase(wishRepositoryAdapter);
+const wishRecoverAllUseCase: WishRecoverAllUseCase = new WishRecoverAllUseCase(
+  wishRepositoryAdapter
+);
+const wishRecoverUseCase: WishRecoverUseCase = new WishRecoverUseCase(
+  wishRepositoryAdapter
+);
+const wishRetrieveUseCase: WishRetrieveUseCase = new WishRetrieveUseCase(
+  wishRepositoryAdapter
+);
+const wishSearchUseCase: WishSearchUseCase = new WishSearchUseCase(
+  wishRepositoryAdapter
+);
+const wishToggleCompleteUseCase: WishToggleCompleteUseCase =
+  new WishToggleCompleteUseCase(wishRepositoryAdapter);
+const wishUpdateUseCase: WishUpdateUseCase = new WishUpdateUseCase(
+  wishRepositoryAdapter
+);
+const wishService: WishService = new WishService(
+  wishCreateUseCase,
+  wishDeleteUseCase,
+  wishUpdateUseCase,
+  wishRetrieveUseCase,
+  wishToggleCompleteUseCase,
+  wishRecoverUseCase,
+  wishRecoverAllUseCase,
+  wishDeleteAllUseCase,
+  wishDeleteAllCompletedUseCase,
+  wishDeleteFromTrashUseCase,
+  wishSearchUseCase
+);
+
+export const WishController = {
+  async updateById(
+    request: RequestBody<{ id: string; name: string }>,
+    response: Response
+  ) {
+    const id: string = request.body.id;
+    const name: string = request.body.name;
+    const wish = await wishService.updateById(id, name);
+    console.log(wish);
+    return response.status(wish ? 200 : 204).send(wish && wish);
+  },
+
+  async deleteAllCompleted(
+    request: RequestBody<{ token: string }>,
+    response: Response
+  ) {
+    const token = request.body.token;
+    const userId = userAuthenticator.verify(token, `${process.env.TOKEN_KEY}`);
+
+    if (userId) {
+      const areRemoved = await wishService.deleteAllCompleted(userId);
+      return response.status(areRemoved ? 200 : 204).send();
+    }
+    return response.status(401).send();
+  },
+
+  async deleteAll(request: RequestBody<{ token: string }>, response: Response) {
+    const token = request.body.token;
+    const userId = userAuthenticator.verify(token, `${process.env.TOKEN_KEY}`);
+
+    if (userId) {
+      const areRemoved = await wishService.deleteAll(userId);
+      return response.status(areRemoved ? 200 : 204).send();
+    }
+    return response.status(401).send();
+  },
+
+  async deleteAllFromTrash(
+    request: RequestBody<{ token: string }>,
+    response: Response
+  ) {
+    const token = request.body.token;
+    const userId = userAuthenticator.verify(token, `${process.env.TOKEN_KEY}`);
+
+    if (userId) {
+      const areRemoved = await wishService.deleteAllFromTrash(userId);
+      return response.status(areRemoved ? 200 : 204).send();
+    }
+    return response.status(401).send();
+  },
+
+  // VERIFIED
 
   async save(
     request: RequestBody<{ data: Wish; token: string }>,
@@ -22,145 +129,70 @@ export class WishController implements WishControllerPort {
   ) {
     const token: string = request.body.token;
     const wish: Wish = request.body.data;
-    const userId = this.userAuthenticator.verify(
-      token,
-      `${process.env.TOKEN_KEY}`
-    );
+    const userId = userAuthenticator.verify(token, `${process.env.TOKEN_KEY}`);
 
     if (userId) {
-      const wishSaved = await this.wishService.save(userId, wish);
-      return wishSaved
-        ? response.status(200).send(wishSaved)
-        : response.status(204);
-    } else return response.status(401);
-  }
-
-  async deleteById(request: RequestBody<{ id: string }>, response: Response) {
-    const id: string = request.body.id;
-    const isRemoved = await this.wishService.deleteById(id);
-    return isRemoved ? response.status(200) : response.status(204);
-  }
-
-  async toggleCompleteById(
-    request: RequestBody<{ id: string }>,
-    response: Response
-  ) {
-    const id: string = request.body.id;
-    const isCompleted = await this.wishService.toggleCompleteById(id);
-    return isCompleted ? response.status(200) : response.status(204);
-  }
-
-  async updateById(
-    request: RequestBody<{ id: string; name: string }>,
-    response: Response
-  ) {
-    const id: string = request.body.id;
-    const name: string = request.body.name;
-    const wish = await this.wishService.updateById(id, name);
-    if (typeof wish !== "undefined") return response.status(200).send(wish);
-    else return response.status(204);
-  }
+      const wishSaved = await wishService.save(userId, wish);
+      return response
+        .status(wishSaved ? 200 : 204)
+        .send(wishSaved && wishSaved);
+    } else return response.status(401).send();
+  },
 
   async recoverById(request: RequestBody<{ id: string }>, response: Response) {
     const id: string = request.body.id;
-    const isRecovered = await this.wishService.recoverById(id);
-    return isRecovered ? response.status(200) : response.status(204);
-  }
-
-  async deleteAllCompleted(
-    request: RequestBody<{ token: string }>,
-    response: Response
-  ) {
-    const token = request.body.token;
-    const userId = this.userAuthenticator.verify(
-      token,
-      `${process.env.TOKEN_KEY}`
-    );
-
-    if (userId) {
-      const areRemoved = await this.wishService.deleteAllCompleted(userId);
-      return areRemoved ? response.status(200) : response.status(204);
-    }
-    return response.status(401);
-  }
+    const isRecovered = await wishService.recoverById(id);
+    return response.status(isRecovered ? 200 : 204).send();
+  },
 
   async recoverAll(
     request: RequestBody<{ token: string }>,
     response: Response
   ) {
     const token = request.body.token;
-    const userId = this.userAuthenticator.verify(
-      token,
-      `${process.env.TOKEN_KEY}`
-    );
+    const userId = userAuthenticator.verify(token, `${process.env.TOKEN_KEY}`);
 
     if (userId) {
-      const areRecovered = await this.wishService.recoverAll(userId);
-      return areRecovered ? response.status(200) : response.status(204);
+      const areRecovered = await wishService.recoverAll(userId);
+      return response.status(areRecovered ? 200 : 204).send();
     }
-    return response.status(401);
-  }
+    return response.status(401).send();
+  },
 
-  async deleteAll(request: RequestBody<{ token: string }>, response: Response) {
-    const token = request.body.token;
-    const userId = this.userAuthenticator.verify(
-      token,
-      `${process.env.TOKEN_KEY}`
-    );
+  async deleteById(request: RequestBody<{ id: string }>, response: Response) {
+    const id: string = request.body.id;
+    const isRemoved = await wishService.deleteById(id);
+    return response.status(isRemoved ? 200 : 204).send();
+  },
 
-    if (userId) {
-      const areRemoved = await this.wishService.deleteAll(userId);
-      return areRemoved ? response.status(200) : response.status(204);
-    }
-    return response.status(401);
-  }
-
-  async deleteAllFromTrash(
-    request: RequestBody<{ token: string }>,
+  async toggleCompleteById(
+    request: RequestBody<{ id: string }>,
     response: Response
   ) {
-    const token = request.body.token;
-    const userId = this.userAuthenticator.verify(
-      token,
-      `${process.env.TOKEN_KEY}`
-    );
+    const id: string = request.body.id;
+    const isCompleted = await wishService.toggleCompleteById(id);
+    console.log(isCompleted);
+    return response.status(isCompleted ? 200 : 204).send();
+  },
 
+  async findAll(request: RequestBody<{ token: string }>, response: Response) {
+    const token = request.body.token;
+    const userId = userAuthenticator.verify(token, `${process.env.TOKEN_KEY}`);
     if (userId) {
-      const areRemoved = await this.wishService.deleteAllFromTrash(userId);
-      return areRemoved ? response.status(200) : response.status(204);
+      const wishes = await wishService.findAll(userId);
+      return response.status(wishes ? 200 : 204).send(wishes && wishes);
     }
     return response.status(401);
-  }
+  },
 
-  async findAll(
-    request: RequestBody<{ token: string }>,
-    response: ResponseBody<Wish[]>
-  ) {
-    const token = request.body.token;
-    const userId = this.userAuthenticator.verify(
-      token,
-      `${process.env.TOKEN_KEY}`
-    );
-    if (userId) {
-      const wishes = await this.wishService.findAll(userId);
-      return wishes ? response.status(200).send(wishes) : response.status(204);
-    }
-    return response.status(401);
-  }
-
-  async searchFromIndex(request: Request, response: ResponseBody<Wish[]>) {
+  async searchFromIndex(request: Request, response: Response) {
     const str: string = request.params.str;
     const token = request.params.token;
-    const userId = this.userAuthenticator.verify(
-      token,
-      `${process.env.TOKEN_KEY}`
-    );
+    const userId = userAuthenticator.verify(token, `${process.env.TOKEN_KEY}`);
     if (userId) {
-      const wishes = await this.wishService.searchFromIndex(userId, str);
-      return wishes ? response.status(200).send(wishes) : response.status(204);
+      const wishes = await wishService.searchFromIndex(userId, str);
+      return response.status(wishes ? 200 : 204).send(wishes && wishes);
     }
     return response.status(401);
-  }
-}
-
-
+  },
+};

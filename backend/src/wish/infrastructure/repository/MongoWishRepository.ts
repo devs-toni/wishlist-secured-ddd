@@ -1,24 +1,24 @@
 import { Wish, WishRepositoryPort } from "../../domain";
-import { WishModel } from './schema/Wish';
-import { SearchModel } from './schema/Search';
+import { WishModel } from "./schema/Wish";
+import { SearchModel } from "./schema/Search";
 
 export class MongoWishRepository implements WishRepositoryPort {
-  async save(userId: string, wish: Wish): Promise<Wish | undefined> {
-    wish.setUserId(userId);
+  async save(userId: string, wish: Wish) {
+    wish.userId = userId;
     try {
       const wishToInsert = await WishModel.find({
-        text: wish.getText(),
+        text: wish.text,
         userId,
       });
 
       if (wishToInsert.length === 0) {
         const wishAdded = await WishModel.create({ ...wish });
         await SearchModel.create({
-          text: wish.getText(),
-          createdAt: wish.getCreatedAt(),
-          userId: wish.getUserId(),
+          text: wish.text,
+          createdAt: wish.createdAt,
+          userId: wish.userId,
         });
-        return wishAdded[0];
+        return wishAdded;
       } else return;
     } catch (error) {
       console.error(error);
@@ -26,7 +26,7 @@ export class MongoWishRepository implements WishRepositoryPort {
     }
   }
 
-  async findAll(userId: string): Promise<Wish[] | undefined> {
+  async findAll(userId: string) {
     try {
       const wishes: Wish[] = await WishModel.find({ userId });
       return wishes;
@@ -36,14 +36,14 @@ export class MongoWishRepository implements WishRepositoryPort {
     }
   }
 
-  async updateById(id: string, text: string): Promise<Wish | undefined> {
+  async updateById(id: string, text: string) {
     try {
       const wishEdited = await WishModel.updateOne(
         { _id: id },
         { $set: { text } }
       );
 
-      if (wishEdited.modifiedCount !== 0) return wishEdited[0];
+      if (wishEdited.modifiedCount !== 0) return wishEdited;
       else return undefined;
     } catch (error) {
       console.error(error);
@@ -51,7 +51,7 @@ export class MongoWishRepository implements WishRepositoryPort {
     }
   }
 
-  async toggleCompleteById(id: string): Promise<boolean> {
+  async toggleCompleteById(id: string) {
     try {
       const wishToComplete = await WishModel.find({ _id: id });
 
@@ -71,7 +71,7 @@ export class MongoWishRepository implements WishRepositoryPort {
     }
   }
 
-  async deleteById(id: string): Promise<boolean> {
+  async deleteById(id: string) {
     try {
       const wishRemoved = await WishModel.updateOne(
         { _id: id },
@@ -89,7 +89,7 @@ export class MongoWishRepository implements WishRepositoryPort {
     }
   }
 
-  async deleteAllCompleted(userId: string): Promise<boolean> {
+  async deleteAllCompleted(userId: string) {
     try {
       const wishDeleted = await WishModel.updateMany(
         { userId, isCompleted: true },
@@ -104,7 +104,7 @@ export class MongoWishRepository implements WishRepositoryPort {
     }
   }
 
-  async deleteAll(userId: string): Promise<boolean> {
+  async deleteAll(userId: string) {
     try {
       const wishesDeleted = await WishModel.updateMany(
         { userId },
@@ -119,7 +119,7 @@ export class MongoWishRepository implements WishRepositoryPort {
     }
   }
 
-  async deleteAllFromTrash(userId: string): Promise<boolean> {
+  async deleteAllFromTrash(userId: string) {
     try {
       const wishesDeleted = await WishModel.deleteMany({
         userId,
@@ -134,7 +134,7 @@ export class MongoWishRepository implements WishRepositoryPort {
     }
   }
 
-  async recoverById(id: string): Promise<boolean> {
+  async recoverById(id: string) {
     try {
       const wishRecovered = await WishModel.updateOne(
         { _id: id },
@@ -148,7 +148,7 @@ export class MongoWishRepository implements WishRepositoryPort {
     }
   }
 
-  async recoverAll(id: string): Promise<boolean> {
+  async recoverAll(id: string) {
     try {
       const wishesRecovered = await WishModel.updateMany(
         { userId: id },
@@ -166,7 +166,7 @@ export class MongoWishRepository implements WishRepositoryPort {
   async searchFromIndex(
     userId: string,
     str: string
-  ): Promise<Wish[] | undefined> {
+  ) {
     try {
       const searchData = await SearchModel.aggregate([
         {

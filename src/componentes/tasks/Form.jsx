@@ -16,7 +16,7 @@ export default function Form({ onSubmit }) {
     if (target.value.length > 1) {
       axios.get(`${BACKEND_URL}/wishes/search/${target.value}/${authState.token}`)
         .then(({ data, status }) => {
-          if (status === 200) setSearchData(data.data);
+          if (status === 200) setSearchData(data);
         })
     } else {
       setSearchData([]);

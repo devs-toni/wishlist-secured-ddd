@@ -52,37 +52,37 @@ export class WishService
     private readonly wishSearchUseCase: WishSearchUseCase
   ) {}
 
-  searchFromIndex(userId: string, str: string): Promise<Wish[] | undefined> {
+  searchFromIndex(userId: string, str: string) {
     return this.wishSearchUseCase.searchFromIndex(userId, str);
   }
-  save(userId: string, wish: Wish): Promise<Wish | undefined> {
+  save(userId: string, wish: Wish) {
     return this.wishCreateUseCase.save(userId, wish);
   }
-  deleteById(id: string): Promise<boolean> {
+  deleteById(id: string) {
     return this.wishDeleteUseCase.deleteById(id);
   }
-  updateById(id: string, text: string): Promise<Wish | undefined> {
+  updateById(id: string, text: string){
     return this.wishUpdateUseCase.updateById(id, text);
   }
-  findAll(userId: string): Promise<Wish[] | undefined> {
+  findAll(userId: string) {
     return this.wishRetrieveUseCase.findAll(userId);
   }
-  toggleCompleteById(id: string): Promise<boolean> {
+  toggleCompleteById(id: string) {
     return this.wishToggleCompleteUseCase.toggleCompleteById(id);
   }
-  recoverById(id: string): Promise<boolean> {
+  recoverById(id: string) {
     return this.wishRecoverUseCase.recoverById(id);
   }
-  recoverAll(userId: string): Promise<boolean> {
+  recoverAll(userId: string) {
     return this.wishRecoverAllUseCase.recoverAll(userId);
   }
-  deleteAll(userId: string): Promise<boolean> {
+  deleteAll(userId: string) {
     return this.wishDeleteAllUseCase.deleteAll(userId);
   }
-  deleteAllCompleted(userId: string): Promise<boolean> {
+  deleteAllCompleted(userId: string) {
     return this.wishDeleteAllCompletedUseCase.deleteAllCompleted(userId);
   }
-  deleteAllFromTrash(userId: string): Promise<boolean> {
+  deleteAllFromTrash(userId: string) {
     return this.wishDeleteFromTrashUseCase.deleteAllFromTrash(userId);
   }
 }

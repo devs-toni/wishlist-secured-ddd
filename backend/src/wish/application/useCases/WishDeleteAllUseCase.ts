@@ -5,7 +5,7 @@ export class WishDeleteAllUseCase implements DeleteAllWishes {
 
   constructor(private readonly wishRepositoryAdapter: WishRepositoryAdapter) {}
  
-  deleteAll(userId: string): Promise<boolean> {
+  deleteAll(userId: string) {
     return this.wishRepositoryAdapter.deleteAll(userId);
   }
 }

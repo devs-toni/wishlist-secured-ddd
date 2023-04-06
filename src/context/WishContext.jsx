@@ -87,9 +87,8 @@ export const WishProvider = ({ children }) => {
       axios.post(`${BACKEND_URL}/wishes/get/all`, { token: authState.token })
         .then(({ data, status }) => {
           if (status === 200) {
-            const { data: wishes } = data;
-            const trash = wishes.filter((wish) => wish.isDeleted)
-            const all = wishes.filter((wish) => !wish.isDeleted)
+            const trash = data.filter((wish) => wish.isDeleted)
+            const all = data.filter((wish) => !wish.isDeleted)
             dispatch({ type: REDUCER_TYPES.SET_ALL_WISHES, payload: all });
             dispatch({ type: REDUCER_TYPES.SET_TRASH_WISHES, payload: trash });
           }
@@ -107,7 +106,7 @@ export const WishProvider = ({ children }) => {
     switch (action) {
       case REDUCER_TYPES.ADD_WISH:
         const isAdded = await axios.put(`${BACKEND_URL}/wishes/add`, { data: reqData, token: authState.token })
-          .then((res) => res.status === 204 ? false : res.data.data._id)
+          .then((res) => res.status === 204 ? false : res.data._id)
         return isAdded;
 
       case REDUCER_TYPES.REMOVE_WISH:

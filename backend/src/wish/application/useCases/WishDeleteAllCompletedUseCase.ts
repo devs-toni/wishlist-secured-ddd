@@ -4,7 +4,7 @@ import { WishRepositoryAdapter } from '../../infrastructure/adapters/WishReposit
 export class WishDeleteAllCompletedUseCase implements DeleteCompletedWishes {
   constructor(private readonly wishRepositoryAdapter: WishRepositoryAdapter) {}
 
-  deleteAllCompleted(userId: string): Promise<boolean> {
+  deleteAllCompleted(userId: string) {
     return this.wishRepositoryAdapter.deleteAllCompleted(userId);
   }
 }

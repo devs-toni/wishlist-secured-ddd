@@ -1,5 +1,5 @@
 import { AuthenticatedUser, RepositoryUser, UserTokenPort } from "../domain";
-import { jwt } from "jsonwebtoken";
+import * as jwt from "jsonwebtoken";
 
 export class UserAuthenticator implements UserTokenPort {
   authenticate(user: RepositoryUser): AuthenticatedUser {

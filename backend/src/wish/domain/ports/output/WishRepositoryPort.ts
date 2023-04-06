@@ -1,25 +1,25 @@
 import { Wish } from "../../entities/Wish";
 
 export interface WishRepositoryPort {
-  save(userId: string, wish: Wish): Promise<Wish | undefined>;
+  save(userId: string, wish: Wish);
 
-  findAll(userId: string): Promise<Wish[] | undefined>;
+  findAll(userId: string);
 
-  updateById(id: string, text: string): Promise<Wish | undefined>;
+  updateById(id: string, text: string);
 
-  toggleCompleteById(id: string): Promise<boolean>;
+  toggleCompleteById(id: string);
 
-  deleteById(id: string): Promise<boolean>;
+  deleteById(id: string);
 
-  deleteAllCompleted(userId: string): Promise<boolean>;
+  deleteAllCompleted(userId: string);
 
-  deleteAll(userId: string): Promise<boolean>;
+  deleteAll(userId: string);
 
-  deleteAllFromTrash(userId: string): Promise<boolean>;
+  deleteAllFromTrash(userId: string);
 
-  recoverById(id: string): Promise<boolean>;
+  recoverById(id: string);
 
-  recoverAll(userId: string): Promise<boolean>;
+  recoverAll(userId: string);
 
-  searchFromIndex(userId: string, str: string): Promise<Wish[] | undefined>;
+  searchFromIndex(userId: string, str: string);
 }

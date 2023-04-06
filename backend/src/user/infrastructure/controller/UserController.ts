@@ -1,51 +1,48 @@
-import { RequestBody, ResponseBody } from "../../../config/domain";
-import {
-  AuthenticatedUser,
-  FormLogin,
-  RepositoryUser,
-  UserControllerPort,
-} from "../../domain";
-import { UserService } from "../../application";
+import { FormLogin } from "../../domain";
+import { Encrypter, UserService } from "../../application";
 import { UserAuthenticator } from "../../application/UserAuthenticator";
+import { UserRepositoryAdapter } from "../adapter/UserRepositoryAdapter";
+import { MongoUserRepository } from "../repository/MongoUserRepository";
+import { Request, Response } from "express";
+
 require("dotenv").config();
+const userAuthenticator: UserAuthenticator = new UserAuthenticator();
+const mongoUserRepository: MongoUserRepository = new MongoUserRepository();
+const encrypter = new Encrypter();
+const userRepository: UserRepositoryAdapter = new UserRepositoryAdapter(
+  mongoUserRepository
+);
 
-export class UserController implements UserControllerPort {
-  
-  constructor(private readonly userService: UserService) {}
+const userService: UserService = new UserService(
+  userRepository,
+  userAuthenticator,
+  encrypter
+);
 
-  async register(
-    request: RequestBody<{ form: { name: string; password: string } }>,
-    response: ResponseBody<RepositoryUser>
-  ) {
+export const UserController = {
+  async register(request: Request, response: Response) {
     const params: FormLogin = request.body;
     const { form } = params;
-    const user = await this.userService.register(form, form.password);
-    if (typeof user !== "undefined") return response.status(200).send(user);
-    else return response.status(204);
-  }
+    const user = await userService.register(form, form.password);
+    return response.status(user ? 200 : 204).send(user && user);
+  },
 
-  async login(
-    request: RequestBody<{ form: { name: string; password: string } }>,
-    response: ResponseBody<AuthenticatedUser>
-  ) {
+  async login(request: Request, response: Response) {
     const params: FormLogin = request.body;
     const { form } = params;
-    const user = await this.userService.login(form.name, form.password);
-    if (typeof user !== "undefined") return response.status(200).send(user);
-    else return response.status(204);
-  }
+    const user = await userService.login(form.name, form.password);
+    return response.status(user ? 200 : 204).send(user && user);
+  },
 
-  async verify(
-    request: RequestBody<{ token: string }>,
-    response: ResponseBody<AuthenticatedUser>
-  ) {
+  async verify(request: Request, response: Response) {
     const token: string = request.body.token;
     const userAuthenticator: UserAuthenticator = new UserAuthenticator();
     const userId = userAuthenticator.verify(token, `${process.env.TOKEN_KEY}`);
+
     if (userId) {
-      const user = await this.userService.findUser(userId);
-      return response.status(200).send({...user, token})
+      const user = await userService.findUser(userId);
+      return response.status(200).send({ ...user, token });
     }
-    return response.status(401)
-  }
-}
+    return response.status(401).send();
+  },
+};

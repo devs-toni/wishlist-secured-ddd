@@ -19,10 +19,8 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await axios.post(`${BACKEND_URL}/users/save`, { form })
-      .then(({ data, status }) => {
-        navigate('/');
-      }).catch((err) => {
-        setError("Username already exists!");
+      .then(({ status }) => {
+        status === 200 ? navigate('/') : setError("Username already exists!");
       });
   }
 

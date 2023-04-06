@@ -4,7 +4,7 @@ import { WishRepositoryAdapter } from '../../infrastructure/adapters/WishReposit
 export class WishRecoverAllUseCase implements RecoverAllWishes {
   constructor(private readonly wishRepositoryAdapter: WishRepositoryAdapter) {}
 
-  recoverAll(userId: string): Promise<boolean> {
+  recoverAll(userId: string) {
     return this.wishRepositoryAdapter.recoverAll(userId);
   }
 }

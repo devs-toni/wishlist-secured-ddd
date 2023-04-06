@@ -23,8 +23,7 @@ const Login = () => {
         if (status === 204) {
           setError("Username/Password are not valid!");
         } else {
-          const { data: user } = data;
-          const { name, token } = user;
+          const { name, token } = data;
           login(name, token);
           navigate('/list');
         }

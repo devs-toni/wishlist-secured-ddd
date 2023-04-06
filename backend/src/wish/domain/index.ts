@@ -10,5 +10,4 @@ export * from './ports/input/RetrieveAllWishes';
 export * from './ports/input/SearchWishes';
 export * from './ports/input/ToggleCompleteWish';
 export * from './ports/input/UpdateWish';
-export * from './ports/output/WishControllerPort';
 export * from './ports/output/WishRepositoryPort';

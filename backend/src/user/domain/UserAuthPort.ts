@@ -1,7 +1,7 @@
-import { AuthenticatedUser, User, RepositoryUser } from "./entities/User";
+import { User } from "./entities/User";
 
 export interface UserAuthPort {
-  login(id: string, password: string): Promise<AuthenticatedUser | undefined>;
-  register(user: User, password: string): Promise<RepositoryUser | undefined>;
-  findUser(id: string): Promise<RepositoryUser | undefined>;
+  login(name: string, password: string);
+  register(user: User, password: string);
+  findUser(id: string);
 }

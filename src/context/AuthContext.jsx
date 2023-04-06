@@ -17,10 +17,9 @@ export const AuthProvider = ({ children }) => {
       if (token) {
         await axios.post(`${BACKEND_URL}/users/verify`, { token })
           .then(({ data, status }) => {
-            const { data: user } = data;
-            const { name, token } = user;
+            const { _doc, token } = data;
             if (status === 200) {
-              login(name, token);
+              login(_doc.name, token);
             }
           }).catch(() => {
             logout();
