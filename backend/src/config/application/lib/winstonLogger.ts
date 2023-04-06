@@ -58,12 +58,12 @@ const winstonLogger = winston.createLogger({
       format: consoleFormat
     }),
     new winston.transports.File({
-      filename: "logs/error.log",
+      filename: "/error.log",
       level: "error",
       format: logFormat
     }),
     new winston.transports.File({ 
-      filename: "logs/all.log",
+      filename: "/all.log",
       format: logFormat 
     }),
   ],

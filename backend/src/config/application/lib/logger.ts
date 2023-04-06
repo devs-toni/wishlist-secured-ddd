@@ -1,7 +1,7 @@
 const { appendFile } = require("fs");
 const { dirname, join } = require("path");
 const appDir = dirname(require.main?.filename);
-const logPath: string = join(appDir, "/logs/activity.log");
+const logPath: string = join(appDir, "/activity.log");
 
 export const writeLog = (data: string): void => {
   const date: string = new Date().toISOString().split("T")[0] as string;

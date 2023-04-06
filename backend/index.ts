@@ -1,7 +1,7 @@
 import express, { Express, Request, Response } from "express";
 import morgan from "morgan";
 import Configuration, { ENV } from "./src/config/infrastructure/Configuration";
-import { loggerStream } from "./lib/winstonLogger";
+import { loggerStream } from "./src/config/application/lib/winstonLogger";
 import { userRouter } from "./src/user/infrastructure";
 import { wishRouter } from "./src/wish/infrastructure";
 import { Database, MongoDBConnection } from "./src/config/infrastructure";
