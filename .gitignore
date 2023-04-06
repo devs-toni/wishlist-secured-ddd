@@ -3,3 +3,4 @@ package-lock.json
 backend/.env
 backend/config/credentials.pem
 backend/src/config/infrastructure/MongoDB/mongo_key.pem
+build

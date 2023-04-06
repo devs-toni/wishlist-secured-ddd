@@ -11,6 +11,7 @@ import { Database, MongoDBConnection } from "./src/config/infrastructure";
 require("dotenv").config();
 const helmet = require("helmet");
 const cors = require("cors");
+const path = require("path");
 const { application } = Configuration;
 
 // SERVER CONFIGURATION
@@ -19,7 +20,8 @@ const app: Express = express();
 
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    //origin: "http://localhost:3000",
+    origin: "https://tasks.arcprojects.es",
     methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
   })
 );
@@ -46,7 +48,7 @@ app.use((_request: Request, response: Response, next: () => void) => {
   response.header("Allow", "GET, POST, OPTIONS, PUT, DELETE, PATCH");
   next();
 });
-
+app.use(express.static(path.join(__dirname, "public")));
 app.use("/users", userRouter);
 app.use("/wishes", wishRouter);
 

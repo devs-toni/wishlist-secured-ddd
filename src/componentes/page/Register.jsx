@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { BACKEND_URL } from '../../helpers/config';
+import loginImage from '../../assets/images/login.webp';
 
 const Register = () => {
 
@@ -27,7 +28,7 @@ const Register = () => {
   return (
     <form onSubmit={handleSubmit} className="login">
       <div className="login__img-container">
-        <img src="https://cdni.iconscout.com/illustration/premium/thumb/task-management-4517376-3742807.png"
+        <img src={loginImage}
           alt="logo" className='login__img-container--img' />
       </div>
       <div className='w-75 m-auto'>
