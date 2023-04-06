@@ -16,6 +16,7 @@ const Main = () => {
   const { addWish, completeWish, deleteWish, updateWish, recoverWish } = singularFunctions;
   const { authState, logout } = useAuth();
 
+
   useEffect(() => {
 
     if (typeof (type) !== "undefined") {
@@ -46,6 +47,7 @@ const Main = () => {
       setFilter("all");
     }
   }, [type, allWishes, trashWishes]);
+
 
   return (
     <>

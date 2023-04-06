@@ -20,7 +20,6 @@ const utils = require("../helpers/utils");
 
 export const WishProvider = ({ children }) => {
 
-
   const { authState } = useAuth();
 
   const initialState = {
@@ -28,7 +27,7 @@ export const WishProvider = ({ children }) => {
     filteredWishes: [],
     trashWishes: [],
     isFilter: false,
-    filter: "all"
+    filter: "all",
   }
 
   const reducer = (state, action) => {

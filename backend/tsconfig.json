@@ -102,7 +102,7 @@
   },
   "include": [
     "./*.ts"
-, "config/config.ts"  ],
+, "src/config/infrastructure/Configuration.ts"  ],
   "exclude": [
 
   ]

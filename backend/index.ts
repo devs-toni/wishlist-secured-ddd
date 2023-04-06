@@ -1,18 +1,17 @@
-import express, { Express, Router, Request, Response } from "express";
-import CONFIG from "./config/config";
+import express, { Express, Request, Response } from "express";
 import morgan from "morgan";
-import { ENV } from "./config/config";
+import Configuration, { ENV } from "./src/config/infrastructure/Configuration";
 import { loggerStream } from "./lib/winstonLogger";
+import { userRouter } from "./src/user/infrastructure";
+import { wishRouter } from "./src/wish/infrastructure";
+import { Database, MongoDBConnection } from "./src/config/infrastructure";
 
 // REQUIREMENTS
 
 require("dotenv").config();
 const helmet = require("helmet");
-const connect = require("./config/database");
 const cors = require("cors");
-const userRouter: Router = require("./routes/UserRouter");
-const wishRouter: Router = require("./routes/WishRouter");
-const { application } = CONFIG;
+const { application } = Configuration;
 
 // SERVER CONFIGURATION
 
@@ -52,8 +51,8 @@ app.use("/users", userRouter);
 app.use("/wishes", wishRouter);
 
 // SERVER CONNECTION
-
-connect().then(() => {
+const database = new Database(new MongoDBConnection());
+database.connect().then(() => {
   app.listen(application.PORT, () => {
     console.log("Server listening on port " + application.PORT);
   });
