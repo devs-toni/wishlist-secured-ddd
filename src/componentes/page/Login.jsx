@@ -66,7 +66,7 @@ const Login = () => {
         />
         <p className='text-danger'>{authState.error}</p>
         <input type="submit" className='submit-btn' value="Login" />
-        <div className='d-flex flex-row mt-5 '>
+        <div className='d-flex flex-row mt-5'>
           <p className='me-2'>Don't you already have an account?</p>
           <NavLink to='/register'>Create an account!</NavLink>
         </div>

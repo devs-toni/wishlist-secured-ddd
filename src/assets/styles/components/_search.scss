@@ -51,6 +51,10 @@
     top: 85%;
     z-index: 20;
 
+    @media screen and (max-width: 770px) {
+      margin-top: 6px;
+    }
+
     &--result {
       min-width: 100%;
       padding: 13px 10px 13px 20px;
@@ -63,6 +67,7 @@
 
       &:hover {
         background-color: rgba(128, 128, 128, 0.366);
+        cursor: pointer;
       }
 
       a {

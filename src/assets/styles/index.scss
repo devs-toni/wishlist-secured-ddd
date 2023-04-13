@@ -21,8 +21,7 @@ body {
   margin: 0;
   font-family: Arial;
 
-  @media screen and (max-width: 768px) {
-    overflow: hidden;
+  @media screen and (max-width: 770px) {
     margin-top: 0;
   }
 }

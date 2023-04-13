@@ -12,3 +12,9 @@
   background-repeat: no-repeat no-repeat;
   filter: saturate(2) contrast(1);
 }
+
+@media screen and (max-width: 770px) {
+  .cover {
+    all: unset;;
+  }  
+}

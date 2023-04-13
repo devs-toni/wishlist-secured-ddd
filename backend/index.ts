@@ -20,8 +20,7 @@ const app: Express = express();
 
 app.use(
   cors({
-    //origin: "http://localhost:3000",
-    origin: "https://tasks.arcprojects.es",
+    origin: ["http://localhost:3000","https://tasks.arcprojects.es"],
     methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
   })
 );
