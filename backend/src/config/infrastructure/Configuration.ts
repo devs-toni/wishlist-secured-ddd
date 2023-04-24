@@ -1,5 +1,6 @@
 import { env, ConfigurationI, ParametersConfig } from "../domain";
 require("dotenv").config();
+
 const { NODE_MODE, PORT, DB_ADDRESS, DB_NAME, DB_PORT } = process.env;
 
 const DB_HOST: string = `${DB_ADDRESS as string}${DB_PORT}${DB_NAME}`;

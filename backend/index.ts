@@ -47,6 +47,7 @@ app.use((_request: Request, response: Response, next: () => void) => {
   response.header("Allow", "GET, POST, OPTIONS, PUT, DELETE, PATCH");
   next();
 });
+
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/users", userRouter);
 app.use("/wishes", wishRouter);
