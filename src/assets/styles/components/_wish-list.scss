@@ -1,6 +1,5 @@
-@use "../../abstracts/variables" as var;
 @use "./form";
-@use "./task";
+@use "./wish";
 
 
 .wish-list {
@@ -11,12 +10,13 @@
   align-items: center;
   z-index: 1;
   position: relative;
-  top: 15vh;
+  top: 10vh;
   height: 100%;
+  width: 100%;
 
   &__title {
-    font-size: 4em;
-    font-weight: lighter;
+    font-size: 3em;
+    font-weight: bolder;
     margin-bottom: 30px;
     color: white;
     letter-spacing: 4px;
@@ -31,7 +31,7 @@
   }
 
   &__main {
-    width: 40%;
+    width: 30%;
     min-width: 700px;
     height: 60vh;
     min-height: 400px;
@@ -76,7 +76,7 @@
       flex-flow: row nowrap;
       justify-content: space-between;
       align-items: center;
-      padding: 2em;
+      padding: 1.2em;
       margin-top: auto;
 
       @media screen and (max-width: 770px) {
@@ -86,8 +86,9 @@
       &__items {
         width: auto;
         text-align: left;
-        opacity: .5;
         font-weight: 550;
+        font-size: .9em;
+        opacity: .7;
 
         @media screen and (max-width: 770px) {
           margin-bottom: 10px;
@@ -109,10 +110,10 @@
           transition: all .5s ease;
           cursor: pointer;
           margin-right: 20px;
-          opacity: .5;
           color: black;
           font-weight: 550;
-          font-size: 1.1em;
+          font-size: .9em;
+          opacity: .7;
 
           @media screen and (max-width: 320px) {
             font-size: .9em;
@@ -120,7 +121,6 @@
 
           &:hover {
             opacity: 1;
-            transform: scale(1.1);
           }
 
           &:last-child {
@@ -150,13 +150,15 @@
         flex-flow: row nowrap;
         justify-content: space-between;
         align-items: center;
+        font-size: .9em;
+        transition: all .3s ease-in-out;
 
         p {
           transition: all .3s ease;
           cursor: pointer;
           margin-right: 20px;
-          opacity: .5;
           font-weight: 550;
+          opacity: .7;
 
           @media screen and (max-width: 320px) {
             font-size: .9em;
@@ -177,6 +179,16 @@
             font-size: small;
           }
         }
+
+        svg {
+          font-size: 1.2em;
+          cursor: pointer;
+          transition: all .3s ease-in-out;
+
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
       }
     }
   }
@@ -187,5 +199,6 @@
 
   @media screen and (max-width: 770px) {
     top: 0;
+    margin-bottom: 10px;
   }
 }

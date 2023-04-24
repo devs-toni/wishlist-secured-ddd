@@ -3,7 +3,7 @@ import uuid from 'react-uuid';
 const SearchBox = ({ results, click }) => {
 
   return (
-    <ul className='search__results'>
+    <ul className={`search__results ${results.length > 0 ? "shadow" : ""}`}>
       {
         (results.length > 0) && results.map((res, ind) => {
           return (

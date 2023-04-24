@@ -5,6 +5,7 @@ import { loggerStream } from "./src/config/application/lib/winstonLogger";
 import { userRouter } from "./src/user/infrastructure";
 import { wishRouter } from "./src/wish/infrastructure";
 import { Database, MongoDBConnection } from "./src/config/infrastructure";
+import { UserVerify } from './src/middleware/userVerify';
 
 // REQUIREMENTS
 
@@ -20,8 +21,8 @@ const app: Express = express();
 
 app.use(
   cors({
-    origin: ["http://localhost:3000","https://tasks.arcprojects.es"],
-    methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
+    origin: ["http://localhost:3000", "https://tasks.arcprojects.es"],
+    methods: ["GET", "POST", "DELETE", "PUT", "PATCH"],
   })
 );
 
@@ -50,7 +51,7 @@ app.use((_request: Request, response: Response, next: () => void) => {
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/users", userRouter);
-app.use("/wishes", wishRouter);
+app.use("/wishes", new UserVerify().verifyUser, wishRouter);
 
 // SERVER CONNECTION
 const database = new Database(new MongoDBConnection());

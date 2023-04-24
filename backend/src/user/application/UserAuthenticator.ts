@@ -1,5 +1,6 @@
 import { AuthenticatedUser, RepositoryUser, UserTokenPort } from "../domain";
 import * as jwt from "jsonwebtoken";
+require('dotenv').config();
 
 export class UserAuthenticator implements UserTokenPort {
   authenticate(user: RepositoryUser): AuthenticatedUser {
@@ -20,13 +21,11 @@ export class UserAuthenticator implements UserTokenPort {
     return authUser;
   }
 
-  verify(token: string, tokenSaved: string): string | undefined {
+  async verify(token: string, tokenSaved: string): Promise<string | undefined> {
     let decoded = { user_id: "" };
     try {
-      decoded = jwt.verify(token, `${process.env.TOKEN_KEY}`);
-      console.log("Good token");
+      decoded = await jwt.verify(token, `${process.env.TOKEN_KEY}`);
     } catch (err) {
-      console.error("bad token");
       return undefined;
     }
     return decoded.user_id;

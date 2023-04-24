@@ -6,6 +6,7 @@ import { MongoUserRepository } from "../repository/MongoUserRepository";
 import { Request, Response } from "express";
 
 require("dotenv").config();
+
 const userAuthenticator: UserAuthenticator = new UserAuthenticator();
 const mongoUserRepository: MongoUserRepository = new MongoUserRepository();
 const encrypter = new Encrypter();
@@ -37,7 +38,7 @@ export const UserController = {
   async verify(request: Request, response: Response) {
     const token: string = request.body.token;
     const userAuthenticator: UserAuthenticator = new UserAuthenticator();
-    const userId = userAuthenticator.verify(token, `${process.env.TOKEN_KEY}`);
+    const userId = await userAuthenticator.verify(token, `${process.env.TOKEN_KEY}`);
 
     if (userId) {
       const user = await userService.findUser(userId);

@@ -1,11 +1,8 @@
-@use "../../abstracts/variables" as var;
-
 .task-container {
   width: 100%;
-  height: 100px;
-  max-height: 100px;
+  max-height: 60px;
   background-color: #ffffff;
-  padding: .3em .3em .3em 1.3em;
+  padding: 0 .2em 0 1em;
   display: flex;
   flex-flow: column wrap;
   justify-content: space-between;
@@ -18,7 +15,11 @@
   }
 
   @media screen and (max-width: 770px) {
-      background-color: rgb(61, 61, 61);
+    background-color: rgb(61, 61, 61);
+  }
+
+  @media screen and (max-width: 500px) {
+    padding-right: 30px;
   }
 
   &__task-text {
@@ -31,20 +32,20 @@
 
     p {
       margin-left: 20px;
-      font-size: 1.5em;
+      font-size: .9em;
       font-weight: 540;
       letter-spacing: 1px;
       transition: all .3s ease;
       margin-bottom: 0;
 
       @media screen and (max-width: 1500px) {
-        font-size: 1.2em;
+        font-size: 1¡.9em;
       }
 
       &.completed {
         text-decoration: line-through;
         opacity: .4;
-        font-size: 1.1em;
+        font-size: .8em;
       }
     }
 
@@ -64,8 +65,8 @@
 
 
       &.completed {
-        width: 25px;
-        height: 25px;
+        width: 20px;
+        height: 20px;
         border: none;
         background: rgb(219, 0, 226);
         background: linear-gradient(90deg, rgba(219, 0, 226, 1) 0%, rgba(0, 191, 230, 1) 100%);
@@ -89,9 +90,9 @@
 
     &--task-icon {
       opacity: .3;
-      width: 30px;
-      height: 30px;
-      margin: 5px;
+      width: 20px;
+      height: 20px;
+      margin: 15px;
       transition: all .6s ease;
       transition: visibility 0s;
       cursor: pointer;

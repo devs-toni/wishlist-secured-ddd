@@ -78,16 +78,15 @@ export const WishController = {
     const id: string = request.body.id;
     const name: string = request.body.name;
     const wish = await wishService.updateById(id, name);
-    console.log(wish);
     return response.status(wish ? 200 : 204).send(wish && wish);
   },
 
   async deleteAllCompleted(
-    request: RequestBody<{ token: string }>,
+    request: Request,
     response: Response
   ) {
-    const token = request.body.token;
-    const userId = userAuthenticator.verify(token, `${process.env.TOKEN_KEY}`);
+    const token = request.headers.authorization;
+    const userId = await userAuthenticator.verify(token!!, `${process.env.TOKEN_KEY}`);
 
     if (userId) {
       const areRemoved = await wishService.deleteAllCompleted(userId);
@@ -96,9 +95,9 @@ export const WishController = {
     return response.status(401).send();
   },
 
-  async deleteAll(request: RequestBody<{ token: string }>, response: Response) {
-    const token = request.body.token;
-    const userId = userAuthenticator.verify(token, `${process.env.TOKEN_KEY}`);
+  async deleteAll(request: Request, response: Response) {
+    const token = request.headers.authorization;
+    const userId = await userAuthenticator.verify(token!!, `${process.env.TOKEN_KEY}`);
 
     if (userId) {
       const areRemoved = await wishService.deleteAll(userId);
@@ -108,11 +107,11 @@ export const WishController = {
   },
 
   async deleteAllFromTrash(
-    request: RequestBody<{ token: string }>,
+    request: Request,
     response: Response
   ) {
-    const token = request.body.token;
-    const userId = userAuthenticator.verify(token, `${process.env.TOKEN_KEY}`);
+    const token = request.headers.authorization;
+    const userId = await userAuthenticator.verify(token!!, `${process.env.TOKEN_KEY}`);
 
     if (userId) {
       const areRemoved = await wishService.deleteAllFromTrash(userId);
@@ -124,12 +123,12 @@ export const WishController = {
   // VERIFIED
 
   async save(
-    request: RequestBody<{ data: Wish; token: string }>,
+    request: RequestBody<{ data: Wish }>,
     response: Response
   ) {
-    const token: string = request.body.token;
+    const token = request.headers.authorization;
     const wish: Wish = request.body.data;
-    const userId = userAuthenticator.verify(token, `${process.env.TOKEN_KEY}`);
+    const userId = await userAuthenticator.verify(token!!, `${process.env.TOKEN_KEY}`);
 
     if (userId) {
       const wishSaved = await wishService.save(userId, wish);
@@ -140,17 +139,17 @@ export const WishController = {
   },
 
   async recoverById(request: RequestBody<{ id: string }>, response: Response) {
-    const id: string = request.body.id;
+    const id = request.body.id;
     const isRecovered = await wishService.recoverById(id);
     return response.status(isRecovered ? 200 : 204).send();
   },
 
   async recoverAll(
-    request: RequestBody<{ token: string }>,
+    request: Request,
     response: Response
   ) {
-    const token = request.body.token;
-    const userId = userAuthenticator.verify(token, `${process.env.TOKEN_KEY}`);
+    const token = request.headers.authorization;
+    const userId = await userAuthenticator.verify(token!!, `${process.env.TOKEN_KEY}`);
 
     if (userId) {
       const areRecovered = await wishService.recoverAll(userId);
@@ -175,9 +174,9 @@ export const WishController = {
     return response.status(isCompleted ? 200 : 204).send();
   },
 
-  async findAll(request: RequestBody<{ token: string }>, response: Response) {
-    const token = request.body.token;
-    const userId = userAuthenticator.verify(token, `${process.env.TOKEN_KEY}`);
+  async findAll(request: Request, response: Response) {
+    const token = request.headers.authorization;
+    const userId = await userAuthenticator.verify(token!!, `${process.env.TOKEN_KEY}`);
     if (userId) {
       const wishes = await wishService.findAll(userId);
       return response.status(wishes ? 200 : 204).send(wishes && wishes);
@@ -187,8 +186,8 @@ export const WishController = {
 
   async searchFromIndex(request: Request, response: Response) {
     const str: string = request.params.str;
-    const token = request.params.token;
-    const userId = userAuthenticator.verify(token, `${process.env.TOKEN_KEY}`);
+    const token = request.headers.authorization;
+    const userId = await userAuthenticator.verify(token!!, `${process.env.TOKEN_KEY}`);
     if (userId) {
       const wishes = await wishService.searchFromIndex(userId, str);
       return response.status(wishes ? 200 : 204).send(wishes && wishes);

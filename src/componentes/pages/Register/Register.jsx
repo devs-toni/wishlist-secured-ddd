@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext';
-import { BACKEND_URL } from '../../helpers/config';
-import loginImage from '../../assets/images/login.webp';
+import { useAuth } from '../../.././context/AuthContext';
+import { BACKEND_URL } from '../../../helpers/config';
+import loginImage from '../../../assets/images/login.webp';
 
 const Register = () => {
 
@@ -19,7 +19,7 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post(`${BACKEND_URL}/users/save`, { form })
+    await axios.post(`${BACKEND_URL}/users`, { form })
       .then(({ status }) => {
         status === 200 ? navigate('/') : setError("Username already exists!");
       });
@@ -31,11 +31,11 @@ const Register = () => {
         <img src={loginImage}
           alt="logo" className='login__img-container--img' />
       </div>
-      <div className='w-75 m-auto'>
+      <div className='w-75 m-auto d-flex flex-column'>
         <p className='login__title'>Register</p>
-        <label htmlFor="password">Username</label>
+        <label htmlFor="password" className='m-auto'>Username</label>
         <input
-          className='w-100 mb-2'
+          className='w-50 mb-2 m-auto'
           value={form.name}
           onChange={handleInput}
           name="name"
@@ -43,9 +43,9 @@ const Register = () => {
           type='text'
           required
         />
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password" className='m-auto'>Password</label>
         <input
-          className='w-100 mb-2'
+          className='w-50 mb-2 m-auto'
           value={form.password}
           name="password"
           onChange={handleInput}
@@ -53,11 +53,11 @@ const Register = () => {
           id='password'
           required
         />
-        <p className='text-danger'>{authState.error}</p>
-        <input type="submit" className='submit-btn' value="Send" />
-        <div className='d-flex flex-row mt-5 '>
+        <p className='text-danger m-auto'>{authState.error}</p>
+        <input type="submit" className='submit-btn m-auto' value="Send" />
+        <div className='d-flex flex-row mt-5 m-auto'>
           <p className='me-2' >Do you already have an account?</p>
-          <NavLink to='/'>Login!</NavLink>
+          <NavLink style={{ color: "#8a2be2" }} to='/'>Login!</NavLink>
         </div>
       </div>
     </form>

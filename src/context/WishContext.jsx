@@ -84,7 +84,7 @@ export const WishProvider = ({ children }) => {
 
   useLayoutEffect(() => {
     const getUserWishes = async () => {
-      axios.post(`${BACKEND_URL}/wishes/get/all`, { token: authState.token })
+      axios.get(`${BACKEND_URL}/wishes`, { headers: { "Authorization": authState.token } })
         .then(({ data, status }) => {
           if (status === 200) {
             const trash = data.filter((wish) => wish.isDeleted)
@@ -105,47 +105,47 @@ export const WishProvider = ({ children }) => {
   const refreshDB = useCallback(async (reqData, action) => {
     switch (action) {
       case REDUCER_TYPES.ADD_WISH:
-        const isAdded = await axios.put(`${BACKEND_URL}/wishes/add`, { data: reqData, token: authState.token })
+        const isAdded = await axios.post(`${BACKEND_URL}/wishes`, { data: reqData }, { headers: { "Authorization": authState.token } })
           .then((res) => res.status === 204 ? false : res.data._id)
         return isAdded;
 
       case REDUCER_TYPES.REMOVE_WISH:
-        const isRemoved = await axios.delete(`${BACKEND_URL}/wishes/remove`, { data: { id: reqData } })
+        const isRemoved = await axios.patch(`${BACKEND_URL}/wishes/delete`, { id: reqData }, { headers: { "Authorization": authState.token } })
           .then((res) => res.status === 204 ? false : true)
         return isRemoved;
 
       case REDUCER_TYPES.COMPLETE_WISH:
-        const isCompleted = await axios.patch(`${BACKEND_URL}/wishes/complete`, { id: reqData })
+        const isCompleted = await axios.patch(`${BACKEND_URL}/wishes/complete`, { id: reqData }, { headers: { "Authorization": authState.token } })
           .then((res) => res.status === 204 ? false : true)
         return isCompleted;
 
       case REDUCER_TYPES.EDIT_WISH:
-        const isEdited = await axios.post(`${BACKEND_URL}/wishes/edit`, { id: reqData.id, name: reqData.name })
+        const isEdited = await axios.patch(`${BACKEND_URL}/wishes/edit`, { id: reqData.id, name: reqData.name }, { headers: { "Authorization": authState.token } })
           .then((res) => res.status === 204 ? false : true)
         return isEdited;
 
       case REDUCER_TYPES.RECOVER_WISH:
-        const isRecovered = await axios.patch(`${BACKEND_URL}/wishes/recover`, { id: reqData })
+        const isRecovered = await axios.patch(`${BACKEND_URL}/wishes/recover`, { id: reqData }, { headers: { "Authorization": authState.token } })
           .then((res) => res.status === 204 ? false : true)
         return isRecovered;
 
       case REDUCER_TYPES.DELETE_COMPLETED:
-        const areDeleted = await axios.delete(`${BACKEND_URL}/wishes/deleteCompleted`, { data: { token: reqData } })
+        const areDeleted = await axios.patch(`${BACKEND_URL}/wishes/delete/allCompleted`, {}, { headers: { "Authorization": authState.token } })
           .then((res) => res.status === 204 ? false : true)
         return areDeleted;
 
       case REDUCER_TYPES.RECOVER_ALL:
-        const areRecovered = await axios.patch(`${BACKEND_URL}/wishes/recoverAll`, { token: reqData })
+        const areRecovered = await axios.patch(`${BACKEND_URL}/wishes/recover/all`, {}, { headers: { "Authorization": authState.token } })
           .then((res) => res.status === 204 ? false : true)
         return areRecovered;
 
       case REDUCER_TYPES.DELETE_ALL:
-        const areAllDeleted = await axios.patch(`${BACKEND_URL}/wishes/deleteAll`, { token: reqData })
+        const areAllDeleted = await axios.patch(`${BACKEND_URL}/wishes/delete/all`, {}, { headers: { "Authorization": authState.token } })
           .then((res) => res.status === 204 ? false : true)
         return areAllDeleted;
 
       case REDUCER_TYPES.EMPTY:
-        const isEmptied = await axios.delete(`${BACKEND_URL}/wishes/empty`, { data: { token: reqData } })
+        const isEmptied = await axios.delete(`${BACKEND_URL}/wishes/all`, { headers: { "Authorization": authState.token } })
           .then((res) => res.status === 204 ? false : true)
         return isEmptied;
 
@@ -316,7 +316,7 @@ export const WishProvider = ({ children }) => {
 
   const getTotalLeftWishes = useCallback(() => {
     if (wishState.allWishes)
-      return wishState.allWishes.filter(w => w?.isCompleted && !w.isCompleted).length;
+      return wishState.allWishes.filter(w => !w.isCompleted).length;
   }, [wishState.allWishes])
 
   // DATA

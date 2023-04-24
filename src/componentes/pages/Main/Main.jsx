@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react'
-import { WishList, Form, Cover } from '../index';
-import { useWishes } from '../../context/WishContext';
+import { useEffect } from 'react'
+import { WishList, Form, Cover } from '../../index';
+import { useWishes } from '../../../context/WishContext';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '../../../context/AuthContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 

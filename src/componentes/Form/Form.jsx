@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import { BACKEND_URL } from '../../helpers/config';
-import SearchBox from '../SearchBox';
 import { useAuth } from '../../context/AuthContext';
+import { SearchBox } from '../index';
 
 export default function Form({ onSubmit }) {
   const { validateName } = require("../../helpers/utils");
@@ -14,7 +14,7 @@ export default function Form({ onSubmit }) {
   const handleChange = ({ target }) => {
     setInputTask(target.value);
     if (target.value.length > 1) {
-      axios.get(`${BACKEND_URL}/wishes/search/${target.value}/${authState.token}`)
+      axios.get(`${BACKEND_URL}/wishes/search/${target.value}`, { headers: { "Authorization": authState.token } })
         .then(({ data, status }) => {
           if (status === 200) setSearchData(data);
         })
@@ -30,7 +30,7 @@ export default function Form({ onSubmit }) {
     const bodyClickQuit = () => {
       setSearchData([]);
     }
-    
+
     document.body.addEventListener("click", () => {
       bodyClickQuit();
     });
@@ -82,7 +82,7 @@ export default function Form({ onSubmit }) {
         <input
           className='form__input'
           type='text'
-          placeholder='Enter Task'
+          placeholder='Enter Wish'
           value={inputTask}
           onChange={handleChange}
         />

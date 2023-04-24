@@ -4,6 +4,8 @@ import { useWishes } from '../../context/WishContext';
 import { Wish } from '../index';
 import PropTypes from 'prop-types';
 import uuid from 'react-uuid';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEraser } from '@fortawesome/free-solid-svg-icons';
 
 export default function WishList({ wishes, completeWish, deleteWish, updateWish, recoverWish }) {
 
@@ -32,14 +34,14 @@ export default function WishList({ wishes, completeWish, deleteWish, updateWish,
               (
                 <>
                   <p style={{ marginBottom: 0 }} onClick={deleteCompletedWishes}>Clear Completed</p>
-                  <p onClick={deleteAllWishes}>Clear All</p>
+                  <FontAwesomeIcon onClick={deleteAllWishes} icon={faEraser} />
                 </>
               )
               :
               (
                 <>
                   <p style={{ marginBottom: 0 }} onClick={recoverAllWishes}>Recover All</p>
-                  <p onClick={deleteTrash}>Clear Trash</p>
+                  <FontAwesomeIcon onClick={deleteTrash} icon={faEraser} />
                 </>
               )
           }

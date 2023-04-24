@@ -1,8 +1,6 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { Login, Main, Page404 } from '../componentes/index';
-import Register from '../componentes/page/Register';
-import PrivateRoute from '../componentes/PrivateRoute';
+import { Login, Main, Page404, Register, PrivateRoute } from '../componentes/index';
 
 const Router = () => {
   return (

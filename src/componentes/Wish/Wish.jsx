@@ -1,7 +1,7 @@
 import { faClose, faCheck, faPencil, faSave } from "@fortawesome/free-solid-svg-icons";
-import { useWishes } from "../../../context/WishContext";
+import { useWishes } from "../../context/WishContext";
 import { PropTypes } from 'prop-types';
-import { ActionIcon } from "../../index";
+import { ActionIcon } from "../index";
 
 export default function Wish({ _id, text, isCompleted, completeWish, deleteWish, updateWish, recoverWish }) {
 

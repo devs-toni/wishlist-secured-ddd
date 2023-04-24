@@ -1,6 +1,6 @@
 .login {
-  width: 40%;
-  margin: 100px auto;
+  width: 30%;
+  margin: 0 auto;
 
   @media (max-width: 1200px) {
     width: 80%;
@@ -8,30 +8,31 @@
   }
 
   &__img-container {
-    width: 100%;
+    width: 60%;
     display: flex;
     justify-content: center;
+    margin: 0 auto;
 
     &--img {
-      width: 100%;
+      width: 70%;
       max-width: 400px;
     }
   }
 
   &__title {
-    font-size: 4em;
+    font-size: 2.5em;
     width: 100%;
     text-align: center;
     text-transform: uppercase;
     font-weight: bolder;
 
     @media (max-width: 770px) {
-      font-size: 2.2em;
+      font-size: 2em;
     }
   }
 
   label {
-    font-size: 1.3em;
+    font-size: 1em;
     margin: 15px 0;
   }
 
@@ -43,13 +44,13 @@
     background-color: white;
     color: black;
     padding: 6px 10px;
-    font-size: 1.4em;
-    min-width: 200px;
+    font-size: 1em;
+    width: 50%;
   }
 
   .submit-btn {
     background-color: blueviolet;
-    width: 100%;
+    width: 50%;
     text-align: center;
     color: white;
     font-weight: bold;

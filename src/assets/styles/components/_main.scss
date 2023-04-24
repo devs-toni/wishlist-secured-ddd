@@ -1,10 +1,7 @@
 .main {
-
-
-  @media screen and (max-width: 770px) {
-    background-color: black;
-  }
+  max-width: 100vw;
 }
+
 
 .user-container {
   position: fixed;
@@ -17,7 +14,7 @@
   z-index: 10;
 
   &__name {
-    font-size: 1.9em;
+    font-size: 1.2em;
     margin-right: 20px;
 
     span {
@@ -27,7 +24,7 @@
   }
 
   &__logout {
-    font-size: 2.7em;
+    font-size: 1.7em;
     cursor: pointer;
     z-index: 10;
 

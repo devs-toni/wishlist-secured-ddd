@@ -1,6 +1,4 @@
-import axios from "axios";
 import Swal from "sweetalert2";
-import { BACKEND_URL } from "./config";
 
 //FORM VALIDATIONS 
 

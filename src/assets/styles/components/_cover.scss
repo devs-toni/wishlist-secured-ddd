@@ -1,20 +1,18 @@
-@use '../abstracts/variables' as var;
-
 .cover {
   position: absolute;
   z-index: 0;
   min-width: 100vw;
-  min-height: 38vh;
-  max-height: 38vh;
+  min-height: 28vh;
+  max-height: 28vh;
   background-image: url("../../images/header.jpg");
   background-size: cover;
-  background-position: 0 70%;
+  background-position: 0 50%;
   background-repeat: no-repeat no-repeat;
   filter: saturate(2) contrast(1);
 }
 
 @media screen and (max-width: 770px) {
   .cover {
-    all: unset;;
+    all: unset;
   }  
 }
